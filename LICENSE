@@ -1,69 +1,75 @@
- <div align="center">
+<p align="center">
+  <img src="assets/idea-support-icon.png" alt="IDEA SUPPORT logo" width="72" />
+</p>
 
-  <img src="assets/idea-support-icon.png" alt="IDEA SUPPORT Logo" width="88" />
+# Proprietary License
 
-  <h1>IDEA SUPPORT</h1>
-  <p><strong>PROPRIETARY LICENSE (ISPL) v1.0</strong></p>
-  <p><code>INTERNAL • PROPRIETARY • ALL RIGHTS RESERVED</code></p>
+**IDEA SUPPORT** · Version 1.0 · Copyright © 2026 IDEA SUPPORT · All rights reserved
 
-  Copyright © 2026 IDEA SUPPORT. All rights reserved.
+This repository is proprietary and confidential. Access is limited to authorized
+users and does not grant any rights except those expressly stated below or
+separately authorized in writing.
 
-</div>
+## Ownership
 
----
+This repository and all of its contents—including source code, software
+architecture, designs, visual assets, documentation, data, and other
+materials—are protected by applicable international copyright, trademark, and
+intellectual property laws.
 
-## 01. OWNERSHIP AND INTELLECTUAL PROPERTY
+All rights, title, and interest in each component belong exclusively to
+IDEA SUPPORT or its respective rights holders, subject to applicable
+contractual agreements.
 
-This repository and all of its contents, including but not limited to source code, software architecture, designs, visual assets, documentation, data, and other materials, are protected by applicable international copyright, trademark, and intellectual property laws.
+## Restrictions
 
-All rights, title, and interest in and to each component belong exclusively to IDEA SUPPORT or its respective underlying rights holders, subject to applicable contractual agreements.
+Unless IDEA SUPPORT or the applicable rights holder gives prior written
+authorization, you may not, directly or indirectly:
 
-## 02. RESTRICTIONS
+- Copy, clone, or reproduce the repository or any part of its contents.
+- Modify, adapt, translate, reverse engineer, decompile, or disassemble the
+  materials, or create derivative works from them.
+- Publish, distribute, sublicense, sell, rent, lease, or otherwise exploit the
+  materials commercially.
+- Use, embed, or integrate the materials into another product, service,
+  software, or project.
 
-Except as expressly authorized in advance and in writing by IDEA SUPPORT or the applicable rights holder, no person or legal entity may, directly or indirectly:
+## Authorized access
 
-- **Copy or Reproduce:** Copy, clone, duplicate, or reproduce the repository or any part of its contents.
-- **Modify or Derive:** Modify, adapt, translate, reverse engineer, decompile, disassemble, or create derivative works from the materials.
-- **Distribute or Commercialize:** Publish, redistribute, sublicense, sell, rent, lease, or otherwise commercially exploit the materials.
-- **Incorporate:** Use, embed, or integrate the materials into any other product, service, software, or project.
+Authorized employees, contractors, and collaborators may access and use this
+repository only within the scope of their authorization and in accordance with
+applicable employment, contractor, confidentiality, and non-disclosure
+agreements.
 
-## 03. AUTHORIZED ACCESS AND SCOPE OF USE
+Possession of or access to this repository does not transfer ownership or grant
+a general license to use, reproduce, distribute, or commercially exploit its
+contents.
 
-Access to or possession of this repository does not grant, imply, or convey any ownership rights or any general license to use, reproduce, distribute, or commercially exploit its contents.
+## Third-party materials
 
-Authorized employees, contractors, and permitted collaborators may access and use this repository solely within the defined scope of their authorization and in accordance with applicable employment, contractor, or non-disclosure agreements (NDAs).
+Third-party libraries, packages, dependencies, fonts, images, and other assets
+embedded in or linked to this repository remain subject to their respective
+licenses and terms. This license does not override, alter, or replace any
+third-party rights or obligations.
 
-## 04. THIRD-PARTY MATERIALS AND DEPENDENCIES
+## Disclaimer and limitation of liability
 
-Third-party libraries, packages, dependencies, fonts, images, or assets embedded in or linked to this repository remain subject to their respective original licenses and terms.
+To the maximum extent permitted by applicable law, the materials are provided
+"AS IS" and "AS AVAILABLE", without warranties of any kind, express or implied,
+including warranties of merchantability, fitness for a particular purpose,
+non-infringement, or system integration.
 
-Nothing in this License overrides, alters, or replaces any third-party license obligations or rights.
+To the maximum extent permitted by applicable law, IDEA SUPPORT and its rights
+holders shall not be liable for any direct, indirect, incidental, special,
+exemplary, or consequential damages arising out of or in connection with use,
+misuse, or inability to use this repository or its contents.
 
-## 05. DISCLAIMER OF WARRANTY AND LIMITATION OF LIABILITY
+## Reservation of rights
 
-- **NO WARRANTY:** To the maximum extent permitted by applicable law, the materials in this repository are provided "AS IS" and "AS AVAILABLE", without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, non-infringement, or system integration.
-- **LIMITATION OF LIABILITY:** In no event shall IDEA SUPPORT or its rights holders be liable for any direct, indirect, incidental, special, exemplary, or consequential damages arising out of or in connection with the use, misuse, or inability to use this repository or its contents.
+All rights, privileges, and remedies not expressly granted in writing are
+reserved by IDEA SUPPORT and its respective rights holders.
 
-## 06. RESERVATION OF RIGHTS
+## Licensing inquiries
 
-All rights, privileges, and remedies not expressly granted in writing under this License are strictly reserved by IDEA SUPPORT and its respective rights holders.
-
-## 07. CONTACT & LICENSING INQUIRIES
-
-For requests regarding licensing permissions, commercial use, or official inquiries, please contact IDEA SUPPORT through its official business support channels.
-
----
-
-<div align="center">
-
-  <img src="assets/idea-support-icon.png" alt="" width="32" />
-
-  **IDEA SUPPORT**
-
-  <sub>Build Together, Grow Further</sub>
-
-  <br />
-
-  <sub>ISPL v1.0 · Copyright © 2026 IDEA SUPPORT</sub>
-
-</div>
+For permission requests, commercial-use inquiries, or other licensing matters,
+contact IDEA SUPPORT through its official business support channels.
