@@ -279,9 +279,6 @@ Contoh berikut digunakan untuk mengerjakan fitur baru dari branch `development`.
 # 1. Pindah ke branch development
 git switch development
 
-# Atau buat branch jika belum tersedia
-git checkout -b <nama-branch-baru>
-
 # 2. Sinkronisasi dengan repository remote
 git pull --ff-only origin development
 
