@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Idea.support — Membantu Bisnis Membangun Produk Digital",
   description:
-    "Kami adalah tim yang mengerjakan pembuatan web, aplikasi mobile, dan produk digital untuk bisnis dan sekolah prosesnya jelas dari brief sampai rilis, dengan hasil yang rapi dan siap dipakai.",
+    "Kami adalah tim yang mengerjakan pembuatan web, aplikasi mobile, dan produk digital untuk bisnis dan sekolah. Prosesnya jelas dari brief sampai rilis, dengan hasil yang rapi dan siap dipakai.",
   keywords: [
     "Idea.support",
     "Produk Digital",

@@ -89,7 +89,7 @@ export default function EmailForm() {
 
       {/* Subtext below form */}
       <p className="mt-3.5 text-xs sm:text-[13px] text-[#666666] font-normal text-center">
-        Bergabung dengan 10++ Bisnis yang sudah berkembang denga Kami
+        Bergabung dengan 10++ Bisnis yang sudah berkembang dengan Kami
       </p>
     </div>
   );
