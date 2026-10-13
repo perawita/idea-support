@@ -30,8 +30,8 @@ export default function Hero() {
       {/* Subtitle / Description */}
       <p className="mt-6 sm:mt-8 mb-8 sm:mb-10 text-[#666666] text-sm sm:text-[15.5px] leading-relaxed max-w-2xl sm:max-w-2xl">
         Kami adalah tim yang mengerjakan pembuatan web, aplikasi mobile, dan
-        produk digital untuk bisnis dan sekolah prosesnya jelas dari brief
-        sampai rilis, dengan hasil yang rapi dan siap dipakai
+        produk digital untuk bisnis dan sekolah. Prosesnya jelas dari brief
+        sampai rilis, dengan hasil yang rapi dan siap dipakai.
       </p>
 
       {/* Cooperation Email Form */}
