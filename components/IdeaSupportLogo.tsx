@@ -4,7 +4,8 @@ interface IdeaSupportLogoProps {
   variant?: "white" | "primary" | "dark";
   showText?: boolean;
   className?: string;
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl" | "2xl";
+  standalone?: boolean;
 }
 
 export default function IdeaSupportLogo({
@@ -12,6 +13,7 @@ export default function IdeaSupportLogo({
   showText = true,
   className = "",
   size = "md",
+  standalone = false,
 }: IdeaSupportLogoProps) {
   const isWhite = variant === "white";
   const textColor = isWhite
@@ -24,12 +26,16 @@ export default function IdeaSupportLogo({
     sm: "w-7 h-7",
     md: "w-9 h-9",
     lg: "w-11 h-11",
+    xl: "w-28 h-28 sm:w-36 sm:h-36",
+    "2xl": "w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64",
   };
 
   const textSizes = {
     sm: "text-base tracking-tight",
     md: "text-lg sm:text-xl tracking-tight",
     lg: "text-2xl tracking-tight",
+    xl: "text-3xl tracking-tight",
+    "2xl": "text-4xl tracking-tight",
   };
 
   return (
@@ -48,7 +54,7 @@ export default function IdeaSupportLogo({
           {isWhite ? (
             <>
               {/* Outer circle for high contrast navbar badge if needed or clean transparent */}
-              <circle cx="50" cy="50" r="46" fill="#0062E0" />
+              {!standalone && <circle cx="50" cy="50" r="46" fill="#0062E0" />}
               {/* i letter: dot + stem */}
               <circle cx="34" cy="32" r="6" fill="#FFFFFF" />
               <rect x="28" y="44" width="12" height="28" rx="6" fill="#FFFFFF" />
@@ -71,7 +77,7 @@ export default function IdeaSupportLogo({
           ) : (
             <>
               {/* Primary Blue Version */}
-              <circle cx="50" cy="50" r="46" fill="#FFFFFF" />
+              {!standalone && <circle cx="50" cy="50" r="46" fill="#FFFFFF" />}
               {/* i letter: dot + stem */}
               <circle cx="34" cy="32" r="6" fill="#0062E0" />
               <rect x="28" y="44" width="12" height="28" rx="6" fill="#0062E0" />
