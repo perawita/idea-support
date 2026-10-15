@@ -33,7 +33,7 @@ export default function FilterPills({
               role="tab"
               aria-selected={isActive}
               onClick={() => onSelectCategory(cat)}
-              className={`min-w-[105px] sm:min-w-[120px] px-6 sm:px-8 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-150 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3] ${
+              className={`min-w-[110px] px-7 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-150 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3] ${
                 isActive
                   ? "bg-[#004CD3] text-white shadow-xs hover:bg-[#003B86]"
                   : "bg-white text-[#004CD3] border border-[#004CD3] hover:bg-[#D0E3F8]/30"

@@ -65,7 +65,7 @@ export default function Navbar({ activePage }: NavbarProps) {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`text-[15px] xl:text-[16px] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80 ${
+                className={`text-[15px] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80 ${
                   isActive
                     ? "bg-white text-[#004CD3] font-semibold px-6 sm:px-7 py-2 sm:py-2.5 rounded-full shadow-xs"
                     : "text-white hover:text-white/85 font-medium px-1 py-1"

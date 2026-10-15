@@ -23,7 +23,7 @@ export default function PageHeader({
           className="w-2.5 h-2.5 rounded-full bg-[#0062E0] ring-4 ring-[#D0E3F8] shrink-0"
           aria-hidden="true"
         />
-        <span className="text-xs sm:text-[13.5px] font-medium text-[#1e293b]">
+        <span className="text-[13px] font-medium text-[#1e293b]">
           {badgeText}
         </span>
       </div>
@@ -54,7 +54,7 @@ export default function PageHeader({
 
       {/* Subtitle if available */}
       {subtitle && (
-        <p className="mt-4 text-[#666666] text-sm sm:text-base max-w-2xl leading-relaxed">
+        <p className="mt-4 text-[#666666] text-[14px] max-w-2xl leading-relaxed">
           {subtitle}
         </p>
       )}

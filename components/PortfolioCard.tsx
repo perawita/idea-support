@@ -28,7 +28,7 @@ export default function PortfolioCard({ item, onViewConcept }: PortfolioCardProp
   return (
     <div className="flex flex-col">
       {/* Top Section Label matching Figma annotation */}
-      <span className="text-[11px] sm:text-xs text-slate-400 font-medium mb-1.5 px-1 block">
+      <span className="text-[11px] text-slate-400 font-medium mb-1.5 px-1 block tracking-wide">
         {topLabel}
       </span>
 
@@ -62,25 +62,25 @@ export default function PortfolioCard({ item, onViewConcept }: PortfolioCardProp
             </div>
 
             {/* Title */}
-            <h3 className="font-bold text-slate-900 text-lg sm:text-[19px] leading-tight group-hover:text-[#004CD3] transition-colors">
+            <h3 className="font-bold text-slate-900 text-[16px] leading-tight group-hover:text-[#004CD3] transition-colors">
               {item.title}
             </h3>
 
             {/* Description */}
-            <p className="text-slate-600 text-xs sm:text-[13.5px] leading-relaxed mt-2">
+            <p className="text-slate-600 text-[13px] leading-relaxed mt-2">
               {item.description}
             </p>
           </div>
 
           {/* Bottom Row: Metadata & Button */}
           <div className="flex items-center justify-between pt-4 mt-5 border-t border-slate-100">
-            <span className="text-xs text-slate-500 font-medium">
+            <span className="text-[12px] text-slate-500 font-medium">
               {item.extraInfo}
             </span>
             <button
               type="button"
               onClick={() => onViewConcept(item)}
-              className="border border-[#004CD3] text-[#004CD3] bg-white hover:bg-[#004CD3] hover:text-white rounded-full px-5 py-2 text-xs sm:text-sm font-semibold transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3] cursor-pointer"
+              className="border border-[#004CD3] text-[#004CD3] bg-white hover:bg-[#004CD3] hover:text-white rounded-full px-5 py-2 text-[13px] font-semibold transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3] cursor-pointer"
             >
               Lihat konsep
             </button>

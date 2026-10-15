@@ -40,7 +40,7 @@ export default function PortfolioPreview({
           <p className="text-[#004CD3] text-xs font-bold tracking-wider uppercase mb-1">
             ILUSTRATIF
           </p>
-          <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed">
+          <p className="text-slate-500 text-[13px] leading-relaxed">
             Eksplorasi tampilan, bukan proyek klien.
           </p>
         </div>
@@ -52,7 +52,7 @@ export default function PortfolioPreview({
   return (
     <div className="w-full bg-[#EDF5FE] rounded-t-[16px] border border-b-0 border-[#D0E3F8] p-5 sm:p-7 flex items-center justify-between gap-4 min-h-[200px] overflow-hidden">
       {/* Smartphone Frame on Left */}
-      <div className="w-28 sm:w-32 bg-white rounded-2xl shadow-[0_2px_12px_rgba(0,98,224,0.06)] border border-[#D0E3F8] overflow-hidden p-2.5 shrink-0">
+      <div className="w-full max-w-[240px] bg-white rounded-2xl shadow-[0_2px_12px_rgba(0,98,224,0.06)] border border-[#D0E3F8] overflow-hidden p-3 shrink-0">
         {/* Top Notch Bar */}
         <div className="flex items-center justify-between mb-2 px-0.5">
           <span className="w-1.5 h-1.5 rounded-full bg-[#004CD3]" />
@@ -60,17 +60,17 @@ export default function PortfolioPreview({
         </div>
 
         {/* Blue Header Box with Underline */}
-        <div className="bg-[#004CD3] rounded-md p-2 text-white shadow-xs mb-2.5">
-          <span className="text-[10px] font-bold tracking-tight block border-b border-white pb-0.5 inline-block">
+        <div className="bg-[#004CD3] rounded-lg p-3 text-white shadow-xs mb-3">
+          <span className="text-[13px] font-bold tracking-tight block border-b-2 border-white pb-1 inline-block">
             Belajar lebih mudah
           </span>
         </div>
 
-        {/* 3 Vertical Blocks */}
-        <div className="space-y-1.5">
-          <div className="bg-[#E8EFF8] rounded-md h-5" />
-          <div className="bg-[#E8EFF8] rounded-md h-5" />
-          <div className="bg-[#E8EFF8] rounded-md h-5" />
+        {/* 3 Wireframe Mockup Blocks */}
+        <div className="grid grid-cols-3 gap-2">
+          <div className="bg-[#E8EFF8] rounded-md h-8" />
+          <div className="bg-[#E8EFF8] rounded-md h-8" />
+          <div className="bg-[#E8EFF8] rounded-md h-8" />
         </div>
       </div>
 
@@ -79,7 +79,7 @@ export default function PortfolioPreview({
         <p className="text-[#004CD3] text-xs font-bold tracking-wider uppercase mb-1">
           ILUSTRATIF
         </p>
-        <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed">
+        <p className="text-slate-500 text-[13px] leading-relaxed">
           Eksplorasi tampilan, bukan proyek klien.
         </p>
       </div>

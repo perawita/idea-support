@@ -126,7 +126,7 @@ export default function PortofolioPage() {
               Tidak ada portofolio ditemukan untuk kategori ini.
             </div>
           ) : (
-            <div className="border-2 border-[#004CD3] rounded-2xl p-5 sm:p-7 bg-[#EDF5FE]/30">
+            <div className="rounded-2xl p-5 sm:p-7 bg-[#EDF5FE]/30">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 {filteredItems.map((item) => (
                   <PortfolioCard
