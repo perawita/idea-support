@@ -10,7 +10,7 @@ export default function Home() {
       <Navbar />
 
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col justify-center">
+      <main className="flex-1 flex flex-col justify-center ">
         {/* Hero Section */}
         <Hero />
 

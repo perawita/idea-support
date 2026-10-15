@@ -13,11 +13,11 @@ const portfolioData: PortfolioItem[] = [
   {
     id: "porto-web-1",
     category: "Website",
-    categoryLabel: "Website / Web Dev",
+    categoryLabel: "Website / Ilustratif · STATIC",
     title: "Konsep website bisnis",
     description:
-      "Desain eksplorasi untuk website profil bisnis modern dengan tata letak bersih, navigasi cepat, dan responsif.",
-    extraInfo: "Status: Konsep Digital",
+      "Contoh tampilan untuk eksplorasi desain. Bukan proyek atau klaim klien idea.support.",
+    extraInfo: "Konten ilustratif",
     features: [
       "Hero interaktif dengan pesan brand yang kuat",
       "Katalog layanan terstruktur dan elegan",
@@ -29,11 +29,11 @@ const portfolioData: PortfolioItem[] = [
   {
     id: "porto-mob-1",
     category: "Mobile",
-    categoryLabel: "Mobile / Android",
+    categoryLabel: "Mobile / Ilustratif · STATIC",
     title: "Konsep aplikasi sekolah",
     description:
-      "Desain antarmuka aplikasi manajemen sekolah untuk siswa, orang tua, dan pengajar dengan alur pengguna yang intuitif.",
-    extraInfo: "Status: Konsep Digital",
+      "Contoh tampilan untuk eksplorasi desain. Bukan proyek atau klaim klien idea.support.",
+    extraInfo: "Konten ilustratif",
     features: [
       "Jadwal belajar dan absensi real-time",
       "Portal tugas dan pengumuman interaktif",
@@ -119,21 +119,23 @@ export default function PortofolioPage() {
         {/* Portfolio Grid (2 Columns on Desktop) */}
         <section
           aria-label="Daftar Portofolio"
-          className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-4"
+          className="max-w-[1298px] mx-auto px-4 sm:px-6 min-[1340px]:px-0 mt-4"
         >
           {filteredItems.length === 0 ? (
             <div className="text-center py-16 text-slate-500">
               Tidak ada portofolio ditemukan untuk kategori ini.
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7">
-              {filteredItems.map((item) => (
-                <PortfolioCard
-                  key={item.id}
-                  item={item}
-                  onViewConcept={handleViewConcept}
-                />
-              ))}
+            <div className="border-2 border-[#004CD3] rounded-2xl p-5 sm:p-7 bg-[#EDF5FE]/30">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                {filteredItems.map((item) => (
+                  <PortfolioCard
+                    key={item.id}
+                    item={item}
+                    onViewConcept={handleViewConcept}
+                  />
+                ))}
+              </div>
             </div>
           )}
         </section>
