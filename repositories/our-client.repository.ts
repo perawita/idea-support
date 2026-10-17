@@ -1,6 +1,11 @@
 import pool from "@/lib/db";
 import { Client, CreateClientDTO, UpdateClientDTO } from "@/types/client";
 
+
+/**
+ * Mengambil semua data client yang belum dihapus (deleted_at IS NULL)
+ * @returns QueryResult<Client>;
+ */
 export async function findClients(): Promise<Client[]> {
     const result = await pool.query<Client>(
         "SELECT * FROM clients WHERE deleted_at IS NULL ORDER BY id DESC"
@@ -8,7 +13,11 @@ export async function findClients(): Promise<Client[]> {
     return result.rows;
 }
 
-// READ (Berdasarkan id)
+/**
+ * Mengambil data client berdasarkan id, jika tidak ditemukan akan mengembalikan null
+ * @param id: number
+ * @returns Promise<Client | null>
+ */
 export async function findClientById(id: number): Promise<Client | null> {
     const result = await pool.query<Client>(
         "SELECT * FROM clients WHERE id = $1 AND deleted_at IS NULL",
@@ -17,7 +26,11 @@ export async function findClientById(id: number): Promise<Client | null> {
     return result.rows[0] || null;
 }
 
-// CREATE
+/**
+ * Membuat data client baru ke dalam database, mengembalikan data client yang baru dibuat
+ * @param data 
+ * @returns 
+ */
 export async function insertClient(data: CreateClientDTO): Promise<Client> {
     const result = await pool.query<Client>(
         "INSERT INTO clients (name, logo_url) VALUES ($1, $2) RETURNING *",
@@ -26,7 +39,12 @@ export async function insertClient(data: CreateClientDTO): Promise<Client> {
     return result.rows[0];
 }
 
-// UPDATE
+/**
+ * Memperbarui data client berdasarkan id, mengembalikan data client yang diperbarui atau null jika tidak ditemukan
+ * @param id 
+ * @param data 
+ * @returns 
+ */
 export async function updateClient(id: number, data: UpdateClientDTO): Promise<Client | null> {
     const result = await pool.query<Client>(
         `UPDATE clients
@@ -41,7 +59,11 @@ export async function updateClient(id: number, data: UpdateClientDTO): Promise<C
     return result.rows[0] || null;
 }
 
-// DELETE (Soft delete)
+/**
+ * Menghapus data client berdasarkan id dengan metode soft delete (mengisi kolom deleted_at dengan timestamp saat ini), mengembalikan true jika berhasil dihapus, false jika tidak ditemukan atau sudah dihapus
+ * @param id 
+ * @returns 
+ */
 export async function softDeleteClient(id: number): Promise<boolean> {
     const result = await pool.query(
         "UPDATE clients SET deleted_at = CURRENT_TIMESTAMP WHERE id = $1 AND deleted_at IS NULL",
@@ -49,8 +71,3 @@ export async function softDeleteClient(id: number): Promise<boolean> {
     );
     return (result.rowCount ?? 0) > 0;
 }
-// export async function getClientsFromDb() {
-//     // eksekusi query
-//     const result = await pool.query("SELECT * FROM clients ORDER BY id DESC");
-//     return result.rows;
-// }
