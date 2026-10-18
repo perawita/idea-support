@@ -1,14 +1,60 @@
-CREATE TABLE IF NOT EXISTS clients (
+﻿CREATE TABLE IF NOT EXISTS klien_kami (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    logo_url TEXT,
+    nama_klien VARCHAR(255) NOT NULL,
+    logo_klien TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP
 );
 
-INSERT INTO clients (name, logo_url)
-VALUES
-    ('Client Alpha', 'https://example.com/logo1.png'),
-    ('Client Beta', 'https://example.com/logo2.png')
-ON CONFLICT DO NOTHING;
+CREATE TABLE IF NOT EXISTS komentar_klien_kami (
+    id_klien SERIAL PRIMARY KEY,
+    judul VARCHAR(255) DEFAULT NULL,
+    komentar TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS layanan (
+    id_layanan SERIAL PRIMARY KEY,
+    tipe_layanan VARCHAR(100) NOT NULL,
+    judul_layanan VARCHAR(255) NOT NULL,
+    deskripsi TEXT NOT NULL,
+    kategori VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS portofolio (
+    id_portofolio SERIAL PRIMARY KEY,
+    kategori VARCHAR(100) NOT NULL,
+    judul VARCHAR(255) NOT NULL,
+    tipe VARCHAR(100) NOT NULL,
+    media TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS tentang_kami (
+    id_tentang_kami SERIAL PRIMARY KEY,
+    deskripsi TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS tim_kami (
+    id_tim_kami SERIAL PRIMARY KEY,
+    nama_depan VARCHAR(255) NOT NULL,
+    nama_belakang VARCHAR(255) NOT NULL,
+    peran VARCHAR(100) NOT NULL,
+    jabatan VARCHAR(100) NOT NULL,
+    linkedin VARCHAR(100) NOT NULL,
+    instagram VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP
+);

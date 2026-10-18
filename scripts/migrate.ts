@@ -5,7 +5,8 @@ import pool from "../lib/db";
 async function runMigration() {
     try {
         const schemaPath = path.join(process.cwd(), "scripts", "schema.sql");
-        const sql = fs.readFileSync(schemaPath, "utf-8");
+        // Hapus karakter BOM (\uFEFF) otomatis jika ada
+        const sql = fs.readFileSync(schemaPath, "utf-8").replace(/^\uFEFF/, "");
 
         console.log("Menjalankan migrasi schema...");
         await pool.query(sql);
