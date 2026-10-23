@@ -5,12 +5,12 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-[#EDF5FE] selection:bg-[#0062E0] selection:text-white">
+    <div className="min-h-screen flex flex-col justify-between bg-[#DAE5F6] selection:bg-[#0062E0] selection:text-white">
       {/* Top Navbar */}
       <Navbar />
 
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col justify-center ">
+      <main className="flex-1 flex flex-col justify-center pb-6 sm:pb-10">
         {/* Hero Section */}
         <Hero />
 

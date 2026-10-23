@@ -20,7 +20,7 @@ const navItems: NavItem[] = [
   { label: "Klien Kami", href: "/klien-kami" },
   { label: "Tentang Kami", href: "/tentang-kami" },
   { label: "Tim", href: "/tim" },
-  { label: "Kontak", href: "/#kontak" },
+  { label: "Kontak", href: "/kontak" },
 ];
 
 export default function Navbar({ activePage }: NavbarProps) {
@@ -38,6 +38,7 @@ export default function Navbar({ activePage }: NavbarProps) {
     if (item.href === "/klien-kami" && pathname.startsWith("/klien-kami")) return true;
     if (item.href === "/tentang-kami" && pathname.startsWith("/tentang-kami")) return true;
     if (item.href === "/tim" && pathname.startsWith("/tim")) return true;
+    if (item.href === "/kontak" && pathname.startsWith("/kontak")) return true;
     return false;
   };
 

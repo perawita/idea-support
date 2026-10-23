@@ -25,9 +25,6 @@ export default function FilterPills({
         const isActive = activeCategory === cat;
         return (
           <div key={cat} className="flex flex-col items-center">
-            <span className="text-[10px] text-slate-400 font-medium mb-1 tracking-tight">
-              {cat} · STATIC
-            </span>
             <button
               type="button"
               role="tab"

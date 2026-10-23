@@ -15,8 +15,8 @@ const servicesData: ServiceItem[] = [
     categoryLabel: "Website / Web Dev",
     title: "Pembuatan Website",
     description:
-      "Website untuk kebutuhan bisnis dan portofolio dengan tampilan yang modern dan responsif.",
-    extraInfo: "Fitur & modul digital",
+      "Website untuk bisnis dan sekolah, dari brief sampai rilis dengan hasil yang rapi dan siap dipakai.",
+    extraInfo: "Web & produk digital",
   },
   {
     id: "mob-1",
@@ -24,17 +24,17 @@ const servicesData: ServiceItem[] = [
     categoryLabel: "Mobile / Android",
     title: "Aplikasi Mobile",
     description:
-      "Aplikasi digital dalam aplikasi bisnis dan sekolah berbasis Android & iOS.",
-    extraInfo: "Fitur & modul digital",
+      "Produk digital dalam aplikasi mobile untuk kebutuhan bisnis dan sekolah.",
+    extraInfo: "Web & produk digital",
   },
   {
     id: "web-2",
     category: "Website",
-    categoryLabel: "Website / Web App",
+    categoryLabel: "Website / Web Dev",
     title: "Pembuatan Website",
     description:
-      "Website untuk kebutuhan bisnis dan portofolio dengan tampilan yang modern dan responsif.",
-    extraInfo: "Fitur & modul digital",
+      "Website untuk bisnis dan sekolah, dari brief sampai rilis dengan hasil yang rapi dan siap dipakai.",
+    extraInfo: "Web & produk digital",
   },
   {
     id: "mob-2",
@@ -42,8 +42,8 @@ const servicesData: ServiceItem[] = [
     categoryLabel: "Mobile / Android",
     title: "Aplikasi Mobile",
     description:
-      "Aplikasi digital dalam aplikasi bisnis dan sekolah berbasis Android & iOS.",
-    extraInfo: "Fitur & modul digital",
+      "Produk digital dalam aplikasi mobile untuk kebutuhan bisnis dan sekolah.",
+    extraInfo: "Web & produk digital",
   },
 ];
 
@@ -57,13 +57,19 @@ export default function LayananPage() {
     return item.category === activeFilter;
   });
 
+  // Group into pairs of 2 so each pair is wrapped in an outer white card matching the design
+  const groupedPairs: ServiceItem[][] = [];
+  for (let i = 0; i < filteredServices.length; i += 2) {
+    groupedPairs.push(filteredServices.slice(i, i + 2));
+  }
+
   const handleContact = (service: ServiceItem) => {
     setSelectedService(service);
     setContactModalOpen(true);
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-[#EDF5FE] selection:bg-[#0062E0] selection:text-white">
+    <div className="min-h-screen flex flex-col justify-between bg-[#DAE5F6] selection:bg-[#004CD3] selection:text-white">
       {/* Top Navbar */}
       <Navbar activePage="Layanan" />
 
@@ -81,25 +87,32 @@ export default function LayananPage() {
           />
         </PageHeader>
 
-        {/* Services Grid (2 Columns on Desktop) */}
+        {/* Services Section with Outer White Containers */}
         <section
           aria-label="Daftar Layanan"
-          className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-4"
+          className="max-w-[1298px] mx-auto px-4 sm:px-6 min-[1340px]:px-0 mt-4 space-y-8"
         >
           {filteredServices.length === 0 ? (
-            <div className="text-center py-16 text-slate-500">
+            <div className="text-center py-16 text-slate-500 bg-white rounded-3xl border border-[#D0E3F8] p-8">
               Tidak ada layanan ditemukan untuk kategori ini.
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
-              {filteredServices.map((service) => (
-                <ServiceCard
-                  key={service.id}
-                  service={service}
-                  onContact={handleContact}
-                />
-              ))}
-            </div>
+            groupedPairs.map((pair, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-3xl sm:rounded-[36px] border border-[#D0E3F8] p-6 sm:p-8 shadow-xs"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                  {pair.map((service) => (
+                    <ServiceCard
+                      key={service.id}
+                      service={service}
+                      onContact={handleContact}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))
           )}
         </section>
       </main>

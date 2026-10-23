@@ -13,7 +13,7 @@ const portfolioData: PortfolioItem[] = [
   {
     id: "porto-web-1",
     category: "Website",
-    categoryLabel: "Website / Ilustratif · STATIC",
+    categoryLabel: "Website / Ilustratif",
     title: "Konsep website bisnis",
     description:
       "Contoh tampilan untuk eksplorasi desain. Bukan proyek atau klaim klien idea.support.",
@@ -29,7 +29,7 @@ const portfolioData: PortfolioItem[] = [
   {
     id: "porto-mob-1",
     category: "Mobile",
-    categoryLabel: "Mobile / Ilustratif · STATIC",
+    categoryLabel: "Mobile / Ilustratif",
     title: "Konsep aplikasi sekolah",
     description:
       "Contoh tampilan untuk eksplorasi desain. Bukan proyek atau klaim klien idea.support.",
@@ -45,11 +45,11 @@ const portfolioData: PortfolioItem[] = [
   {
     id: "porto-web-2",
     category: "Website",
-    categoryLabel: "Website / Web App",
+    categoryLabel: "Website / Ilustratif",
     title: "Konsep website bisnis",
     description:
-      "Desain eksplorasi untuk website profil bisnis modern dengan tata letak bersih, navigasi cepat, dan responsif.",
-    extraInfo: "Status: Konsep Digital",
+      "Contoh tampilan untuk eksplorasi desain. Bukan proyek atau klaim klien idea.support.",
+    extraInfo: "Konten ilustratif",
     features: [
       "Sistem showcase portofolio dinamis",
       "Integrasi feedback dan testimoni klien",
@@ -61,11 +61,11 @@ const portfolioData: PortfolioItem[] = [
   {
     id: "porto-mob-2",
     category: "Mobile",
-    categoryLabel: "Mobile / Android",
+    categoryLabel: "Mobile / Ilustratif",
     title: "Konsep aplikasi sekolah",
     description:
-      "Desain antarmuka aplikasi manajemen sekolah untuk siswa, orang tua, dan pengajar dengan alur pengguna yang intuitif.",
-    extraInfo: "Status: Konsep Digital",
+      "Contoh tampilan untuk eksplorasi desain. Bukan proyek atau klaim klien idea.support.",
+    extraInfo: "Konten ilustratif",
     features: [
       "Dashboard nilai dan perkembangan siswa",
       "Fitur komunikasi guru dan wali murid",
@@ -87,6 +87,12 @@ export default function PortofolioPage() {
     return item.category === activeFilter;
   });
 
+  // Group into pairs of 2 so each pair is wrapped in an outer white card matching Image 1
+  const groupedPairs: PortfolioItem[][] = [];
+  for (let i = 0; i < filteredItems.length; i += 2) {
+    groupedPairs.push(filteredItems.slice(i, i + 2));
+  }
+
   const handleViewConcept = (item: PortfolioItem) => {
     setSelectedConcept(item);
     setConceptModalOpen(true);
@@ -98,7 +104,7 @@ export default function PortofolioPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-[#EDF5FE] selection:bg-[#0062E0] selection:text-white">
+    <div className="min-h-screen flex flex-col justify-between bg-[#DAE5F6] selection:bg-[#004CD3] selection:text-white">
       {/* Top Navbar */}
       <Navbar activePage="Portofolio" />
 
@@ -116,27 +122,32 @@ export default function PortofolioPage() {
           />
         </PageHeader>
 
-        {/* Portfolio Grid (2 Columns on Desktop) */}
+        {/* Portfolio Section */}
         <section
           aria-label="Daftar Portofolio"
-          className="max-w-[1298px] mx-auto px-4 sm:px-6 min-[1340px]:px-0 mt-4"
+          className="max-w-[1298px] mx-auto px-4 sm:px-6 min-[1340px]:px-0 mt-4 space-y-8"
         >
           {filteredItems.length === 0 ? (
-            <div className="text-center py-16 text-slate-500">
+            <div className="text-center py-16 text-slate-500 bg-white rounded-3xl border border-[#D0E3F8] p-8">
               Tidak ada portofolio ditemukan untuk kategori ini.
             </div>
           ) : (
-            <div className="rounded-2xl p-5 sm:p-7 bg-[#EDF5FE]/30">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                {filteredItems.map((item) => (
-                  <PortfolioCard
-                    key={item.id}
-                    item={item}
-                    onViewConcept={handleViewConcept}
-                  />
-                ))}
+            groupedPairs.map((pair, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-3xl sm:rounded-[36px] border border-[#D0E3F8] p-6 sm:p-8 shadow-xs"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                  {pair.map((item) => (
+                    <PortfolioCard
+                      key={item.id}
+                      item={item}
+                      onViewConcept={handleViewConcept}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
+            ))
           )}
         </section>
       </main>

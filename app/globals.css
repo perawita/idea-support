@@ -59,7 +59,7 @@
   --color-black: #000000;
 
   /* Background matching Figma Web Design frame */
-  --background: #edf5fe;
+  --background: #DAE5F6;
   --foreground: #1e293b;
 }
 
@@ -200,5 +200,39 @@ body {
 .typography-body {
   font-size: 12pt;
   line-height: 1.5;
+}
+
+/* Client Logo Infinite Marquee Animation */
+@keyframes clientLogoMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.client-logo-marquee-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.client-logo-marquee {
+  display: flex;
+  width: max-content;
+  animation: clientLogoMarquee var(--client-logo-speed, 28s) linear infinite;
+  will-change: transform;
+}
+
+.client-logo-marquee-container:hover .client-logo-marquee {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-logo-marquee {
+    animation: none;
+    transform: none;
+  }
 }
 

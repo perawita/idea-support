@@ -33,7 +33,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${poppins.variable} h-full antialiased font-sans`}
     >
-      <body className="min-h-screen flex flex-col bg-[#EDF5FE] text-[#1e293b] font-sans">
+      <body className="min-h-screen flex flex-col bg-[#DAE5F6] text-[#1e293b] font-sans">
         {children}
       </body>
     </html>
