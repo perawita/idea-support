@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import PageHeader from "@/components/PageHeader";
 import FilterPills, { FilterCategory } from "@/components/FilterPills";
@@ -46,6 +46,8 @@ const servicesData: ServiceItem[] = [
     extraInfo: "Web & produk digital",
   },
 ];
+
+
 
 export default function LayananPage() {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>("More");

@@ -68,6 +68,18 @@ npm ci
 
 Jangan menghapus atau mengubah lockfile tanpa alasan teknis yang jelas.
 
+### 2.4. Setup dan migrasi database
+
+Pastikan service PostgreSQL telah berjalan dan file `.env` telah dikonfigurasi berdasarkan `.env.example`.
+
+Jalankan perintah migrasi skema database:
+
+```bash
+npm run db:migrate
+```
+
+Perintah ini akan mengeksekusi script DDL pada `scripts/schema.sql` untuk membuat tabel-tabel yang diperlukan (seperti `clients`) beserta data awalnya.
+
 ---
 
 ## 3. SPESIFIKASI PROYEK
@@ -79,6 +91,16 @@ Konfigurasi lengkap proyek ditetapkan di:
 ```
 
 File tersebut menjadi sumber utama untuk informasi package, script, dependency, dan konfigurasi yang didefinisikan di dalamnya.
+
+### Script yang Tersedia
+
+| Script | Command | Keterangan |
+|---|---|---|
+| `dev` | `npm run dev` | Menjalankan server aplikasi Next.js dalam mode development |
+| `build` | `npm run build` | Mengompilasi kode menjadi build production |
+| `start` | `npm run start` | Menjalankan server aplikasi production hasil build |
+| `lint` | `npm run lint` | Menjalankan pemeriksaan kode menggunakan ESLint |
+| `db:migrate` | `npm run db:migrate` | Menjalankan migrasi skema database PostgreSQL (`scripts/migrate.ts`) |
 
 ### Ketentuan
 
@@ -147,6 +169,16 @@ Gunakan branch terpisah sesuai tujuan perubahan.
 | `fix/*` | Perbaikan bug |
 | `refactor/*` | Restrukturisasi kode |
 | `hotfix/*` | Perbaikan mendesak pada production |
+
+### Script yang Tersedia
+
+| Script | Command | Keterangan |
+|---|---|---|
+| `dev` | `npm run dev` | Menjalankan server aplikasi Next.js dalam mode development |
+| `build` | `npm run build` | Mengompilasi kode menjadi build production |
+| `start` | `npm run start` | Menjalankan server aplikasi production hasil build |
+| `lint` | `npm run lint` | Menjalankan pemeriksaan kode menggunakan ESLint |
+| `db:migrate` | `npm run db:migrate` | Menjalankan migrasi skema database PostgreSQL (`scripts/migrate.ts`) |
 
 ### Ketentuan
 
@@ -342,6 +374,16 @@ Contoh:
 9. Deploy melalui pipeline yang telah disetujui.
 10. Verifikasi health aplikasi dan fungsi kritis setelah deployment.
 11. Siapkan dan dokumentasikan prosedur rollback.
+
+### Script yang Tersedia
+
+| Script | Command | Keterangan |
+|---|---|---|
+| `dev` | `npm run dev` | Menjalankan server aplikasi Next.js dalam mode development |
+| `build` | `npm run build` | Mengompilasi kode menjadi build production |
+| `start` | `npm run start` | Menjalankan server aplikasi production hasil build |
+| `lint` | `npm run lint` | Menjalankan pemeriksaan kode menggunakan ESLint |
+| `db:migrate` | `npm run db:migrate` | Menjalankan migrasi skema database PostgreSQL (`scripts/migrate.ts`) |
 
 ### Ketentuan release
 
