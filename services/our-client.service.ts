@@ -1,18 +1,18 @@
 import * as clientRepo from "@/repositories/our-client.repository";
 import { CreateClientDTO, UpdateClientDTO } from "@/types/client";
 
+
 /**
- * Mengambil semua data client (opsi includeDeleted untuk halaman admin)
- * @param includeDeleted: boolean
+ * Mengambil semua data client yang belum dihapus (deleted_at IS NULL)
  * @returns Promise<Client[]>
  */
-export async function getAllClients(includeDeleted = false) {
-    return await clientRepo.findClients(includeDeleted);
+export async function getAllClients() {
+    return await clientRepo.findClients();
 }
 
 /**
- * Mengambil data client berdasarkan id
- * @param id: number
+ * Mengambil data client berdasarkan id, jika tidak ditemukan akan mengembalikan null
+ * @param id 
  * @returns Promise<Client | null>
  */
 export async function getClientById(id: number) {
@@ -29,28 +29,30 @@ export async function getClientById(id: number) {
 }
 
 /**
- * Menambah data client baru ke dalam database
+ * Menambah data client baru ke dalam database, mengembalikan data client yang baru dibuat
  * @param payload: CreateClientDTO
  * @returns Promise<Client>
  */
 export async function createNewClient(payload: CreateClientDTO) {
-    const name = payload.nama_klien || payload.name;
-    if (!name || name.trim() === "") {
+    if (!payload.nama_klien || payload.nama_klien.trim() === "") {
         throw new Error("Nama client wajib diisi");
     }
     return await clientRepo.insertClient(payload);
 }
 
 /**
- * Perbarui data client berdasarkan id
+ * Perbarui data client berdasarkan id, mengembalikan data 
+ * client yang diperbarui atau error jika tidak ditemukan
  * @param id: number
  * @param payload: UpdateClientDTO
+ * @returns 
  */
 export async function updateClient(id: number, payload: UpdateClientDTO) {
     if (!id || id <= 0) {
         throw new Error("ID client tidak valid");
     }
 
+    // memastikan data client ada sebelum update
     const existing = await clientRepo.findClientById(id);
     if (!existing) {
         throw new Error("Client tidak ditemukan");
@@ -60,33 +62,20 @@ export async function updateClient(id: number, payload: UpdateClientDTO) {
 }
 
 /**
- * Menghapus data client berdasarkan id dengan metode soft delete
+ * Menghapus data client berdasarkan id dengan metode soft delete 
+ * (mengisi kolom deleted_at dengan timestamp saat ini), mengembalikan 
+ * pesan sukses atau error jika tidak ditemukan
  * @param id: number
+ * @returns Message: string
  */
 export async function deleteClient(id: number) {
     if (!id || id <= 0) {
-        throw new Error("ID client tidak valid");
+        throw new Error("ID client tidak valid")
     }
 
     const isDeleted = await clientRepo.softDeleteClient(id);
     if (!isDeleted) {
-        throw new Error("Client tidak ditemukan atau sudah dihapus");
+        throw new Error("Client tidak ditemukan atau sudah dihapus")
     }
-    return { message: "Client berhasil dihapus" };
-}
-
-/**
- * Memulihkan data client yang di-soft-delete
- * @param id: number
- */
-export async function restoreClient(id: number) {
-    if (!id || id <= 0) {
-        throw new Error("ID client tidak valid");
-    }
-
-    const isRestored = await clientRepo.restoreClient(id);
-    if (!isRestored) {
-        throw new Error("Client tidak ditemukan atau gagal dipulihkan");
-    }
-    return { message: "Client berhasil dipulihkan" };
+    return { Message: "Client berhasil dihapus" };
 }

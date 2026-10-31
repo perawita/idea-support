@@ -2,6 +2,14 @@ import fs from "fs";
 import path from "path";
 import pool from "../lib/db";
 
+
+/**
+ * Script Otomatisasi Migrasi Database
+ * Membaca file 'scripts/schema.sql', membersihkan karakter BOM jika ada, 
+ * lalu mengeksekusi DDL query ke PostgreSQL untuk membuat/memperbarui tabel.
+ * Dijalankan via perintah: npm run db:migrate
+ */
+
 async function runMigration() {
     try {
         const schemaPath = path.join(process.cwd(), "scripts", "schema.sql");

@@ -1,11 +1,11 @@
 import React from "react";
 
-export function PertaminaLogo({ className = "h-7" }: { className?: string }) {
+export function PertaminaLogo({ className = "" }: { className?: string }) {
   return (
-    <div className={`inline-flex items-center gap-2.5 ${className}`}>
+    <div className={`inline-flex items-center gap-2.5 shrink-0 whitespace-nowrap py-1 ${className}`}>
       {/* Pertamina 3-shape mark: Blue, Green, Red curved parallelograms */}
       <svg
-        className="h-7 w-auto aspect-[1.1/1]"
+        className="h-7 sm:h-8 w-auto aspect-[1.1/1] shrink-0"
         viewBox="0 0 44 40"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -27,19 +27,19 @@ export function PertaminaLogo({ className = "h-7" }: { className?: string }) {
           fill="#ED1C24"
         />
       </svg>
-      <span className="font-extrabold tracking-wider text-[#1C2C42] text-lg sm:text-xl font-sans">
+      <span className="font-extrabold tracking-wider text-[#1C2C42] text-lg sm:text-xl font-sans shrink-0 whitespace-nowrap leading-none">
         PERTAMINA
       </span>
     </div>
   );
 }
 
-export function AquamanPoolsLogo({ className = "h-7" }: { className?: string }) {
+export function AquamanPoolsLogo({ className = "" }: { className?: string }) {
   return (
-    <div className={`inline-flex items-center gap-2.5 ${className}`}>
+    <div className={`inline-flex items-center gap-2.5 shrink-0 whitespace-nowrap py-1 ${className}`}>
       {/* Aquaman wave / pool monogram */}
       <svg
-        className="h-7 w-auto aspect-[1.1/1]"
+        className="h-7 sm:h-8 w-auto aspect-[1.1/1] shrink-0"
         viewBox="0 0 40 36"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -64,11 +64,11 @@ export function AquamanPoolsLogo({ className = "h-7" }: { className?: string }) 
           strokeLinecap="round"
         />
       </svg>
-      <div className="flex flex-col text-left">
-        <span className="font-black text-[#0B2545] text-base sm:text-lg tracking-wider leading-none">
+      <div className="flex flex-col text-left shrink-0 whitespace-nowrap">
+        <span className="font-black text-[#0B2545] text-base sm:text-lg tracking-wider leading-none shrink-0 whitespace-nowrap">
           AQUAMAN
         </span>
-        <span className="text-[9px] sm:text-[10px] font-bold text-[#0B2545]/80 tracking-[0.2em] leading-tight mt-0.5">
+        <span className="text-[9px] sm:text-[10px] font-bold text-[#0B2545]/80 tracking-[0.2em] leading-tight mt-0.5 shrink-0 whitespace-nowrap">
           POOLS LLC
         </span>
       </div>
@@ -76,16 +76,16 @@ export function AquamanPoolsLogo({ className = "h-7" }: { className?: string }) 
   );
 }
 
-export function SuperEpicLogo({ className = "h-9" }: { className?: string }) {
+export function SuperEpicLogo({ className = "" }: { className?: string }) {
   return (
-    <div className={`inline-flex items-center ${className}`}>
+    <div className={`inline-flex items-center justify-center shrink-0 whitespace-nowrap py-1 px-1.5 ${className}`}>
       {/* Super Epic iconic comic style yellow badge sticker with 3D black shadow */}
-      <div className="relative transform -rotate-2">
-        <div className="bg-[#FFE100] border-[2.5px] border-black rounded-lg px-2.5 py-0.5 shadow-[2.5px_2.5px_0px_#000000] flex flex-col items-center justify-center leading-none">
-          <span className="font-black tracking-tight text-black text-xs sm:text-sm uppercase font-sans">
+      <div className="relative transform -rotate-2 select-none">
+        <div className="bg-[#FFE100] border-[2px] sm:border-[2.5px] border-black rounded-lg px-2 sm:px-2.5 py-0.5 shadow-[2.5px_2.5px_0px_#000000] flex flex-col items-center justify-center leading-none">
+          <span className="font-black tracking-tight text-black text-xs sm:text-[13px] uppercase font-sans whitespace-nowrap">
             SUPER
           </span>
-          <span className="font-black tracking-wide text-black text-xs sm:text-sm uppercase font-sans -mt-0.5">
+          <span className="font-black tracking-wide text-black text-xs sm:text-[13px] uppercase font-sans -mt-0.5 whitespace-nowrap">
             EPIC
           </span>
         </div>
@@ -94,23 +94,76 @@ export function SuperEpicLogo({ className = "h-9" }: { className?: string }) {
   );
 }
 
-export default function ClientLogos() {
+export interface ClientLogosProps {
+  speed?: string;
+  className?: string;
+}
+
+export default function ClientLogos({
+  speed = "28s",
+  className = "",
+}: ClientLogosProps) {
+  // Base sequence of client logos maintaining exact original order
+  const logos = [
+    { id: "pertamina-1", component: <PertaminaLogo /> },
+    { id: "aquaman-1", component: <AquamanPoolsLogo /> },
+    { id: "super-epic-1", component: <SuperEpicLogo /> },
+    { id: "aquaman-2", component: <AquamanPoolsLogo /> },
+    { id: "pertamina-2", component: <PertaminaLogo /> },
+    { id: "aquaman-3", component: <AquamanPoolsLogo /> },
+    { id: "super-epic-2", component: <SuperEpicLogo /> },
+    { id: "aquaman-4", component: <AquamanPoolsLogo /> },
+  ];
+
   return (
-    <section id="klien" className="w-full py-6 sm:py-8">
-      <div className="max-w-5xl mx-auto px-4">
-        {/* Logos container */}
-        <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-20 opacity-90 transition-opacity hover:opacity-100">
-          <div className="flex items-center justify-center transition-transform hover:scale-105 duration-200">
-            <PertaminaLogo />
-          </div>
-          <div className="flex items-center justify-center transition-transform hover:scale-105 duration-200">
-            <AquamanPoolsLogo />
-          </div>
-          <div className="flex items-center justify-center transition-transform hover:scale-105 duration-200">
-            <SuperEpicLogo />
-          </div>
-          <div className="flex items-center justify-center transition-transform hover:scale-105 duration-200">
-            <AquamanPoolsLogo />
+    <section
+      id="klien"
+      aria-label="Logo Klien Idea.support"
+      className={`w-full py-6 sm:py-8 overflow-hidden ${className}`}
+    >
+      <div className="max-w-5xl mx-auto px-4 relative">
+        {/* Subtle gradient edge masks for smooth fade in/out */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-20 md:w-28 bg-gradient-to-r from-[#DAE5F6] via-[#DAE5F6]/80 to-transparent z-10"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-20 md:w-28 bg-gradient-to-l from-[#DAE5F6] via-[#DAE5F6]/80 to-transparent z-10"
+        />
+
+        {/* Marquee Track Container */}
+        <div
+          className="client-logo-marquee-container relative w-full overflow-hidden py-2.5 sm:py-3"
+          style={{ "--client-logo-speed": speed } as React.CSSProperties}
+        >
+          <div className="client-logo-marquee flex items-center opacity-90 transition-opacity hover:opacity-100">
+            {/* Track 1: Original Track (Read by Screen Readers) */}
+            <div className="flex items-center shrink-0 justify-around gap-8 sm:gap-12 md:gap-16 lg:gap-20 pr-8 sm:pr-12 md:pr-16 lg:pr-20">
+              {logos.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex items-center justify-center shrink-0 px-2 transition-transform duration-200 hover:scale-105"
+                >
+                  {item.component}
+                </div>
+              ))}
+            </div>
+
+            {/* Track 2: Duplicate Track for seamless infinite loop (Hidden from Screen Readers) */}
+            <div
+              aria-hidden="true"
+              className="flex items-center shrink-0 justify-around gap-8 sm:gap-12 md:gap-16 lg:gap-20 pr-8 sm:pr-12 md:pr-16 lg:pr-20"
+            >
+              {logos.map((item) => (
+                <div
+                  key={`dup-${item.id}`}
+                  className="flex items-center justify-center shrink-0 px-2 transition-transform duration-200 hover:scale-105"
+                >
+                  {item.component}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -16,95 +16,91 @@ export default function IdeaSupportLogo({
   standalone = false,
 }: IdeaSupportLogoProps) {
   const isWhite = variant === "white";
-  const textColor = isWhite
-    ? "text-white"
-    : variant === "primary"
-    ? "text-[#0062E0]"
-    : "text-[#171717]";
+  const isPrimary = variant === "primary";
 
-  const iconSizes = {
-    sm: "w-7 h-7",
-    md: "w-9 h-9",
-    lg: "w-11 h-11",
-    xl: "w-28 h-28 sm:w-36 sm:h-36",
-    "2xl": "w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64",
+  // Size configurations
+  const circleSizes = {
+    sm: "w-8 h-8 p-1.5",
+    md: "w-10 h-10 sm:w-11 sm:h-11 p-2",
+    lg: "w-12 h-12 p-2.5",
+    xl: "w-28 h-28 p-5",
+    "2xl": "w-44 h-44 p-8",
   };
 
-  const textSizes = {
-    sm: "text-base tracking-tight",
-    md: "text-lg sm:text-xl tracking-tight",
-    lg: "text-2xl tracking-tight",
-    xl: "text-3xl tracking-tight",
-    "2xl": "text-4xl tracking-tight",
+  const textHeights = {
+    sm: "h-4",
+    md: "h-5 sm:h-[22px]",
+    lg: "h-6 sm:h-7",
+    xl: "h-12",
+    "2xl": "h-16",
   };
+
+  const circleBg = isWhite
+    ? "bg-[#003B86]"
+    : isPrimary
+    ? "bg-[#D0E3F8]"
+    : "bg-[#E0E0E0]";
+
+  const maskColor = isPrimary ? "#004CD3" : "#171717";
 
   return (
-    <div className={`inline-flex items-center gap-2 select-none ${className}`}>
-      {/* Monogram Mark: Circle with 'is' logo */}
+    <div className={`inline-flex items-center gap-2.5 sm:gap-3 select-none ${className}`}>
+      {/* Monogram Badge using official assets/idea-support-icon.png mark */}
       <div
-        className={`relative ${iconSizes[size]} flex items-center justify-center shrink-0`}
+        className={`relative ${circleSizes[size]} ${
+          standalone ? "bg-transparent" : circleBg
+        } rounded-full flex items-center justify-center shrink-0 shadow-xs`}
       >
-        <svg
-          viewBox="0 0 100 100"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full"
-          aria-hidden="true"
-        >
-          {isWhite ? (
-            <>
-              {/* Outer circle for high contrast navbar badge if needed or clean transparent */}
-              {!standalone && <circle cx="50" cy="50" r="46" fill="#0062E0" />}
-              {/* i letter: dot + stem */}
-              <circle cx="34" cy="32" r="6" fill="#FFFFFF" />
-              <rect x="28" y="44" width="12" height="28" rx="6" fill="#FFFFFF" />
-
-              {/* s letter with upward arrow at top-right */}
-              {/* Arrow head */}
-              <path
-                d="M60 25H77V42L70 35L57 48L51 42L64 29L60 25Z"
-                fill="#FFFFFF"
-              />
-              {/* S curves */}
-              <path
-                d="M52 46C55 42 61 40 68 44C74 48 74 54 70 59L55 64C49 66 48 70 52 74C56 77 65 77 71 72"
-                stroke="#FFFFFF"
-                strokeWidth="7"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </>
-          ) : (
-            <>
-              {/* Primary Blue Version */}
-              {!standalone && <circle cx="50" cy="50" r="46" fill="#FFFFFF" />}
-              {/* i letter: dot + stem */}
-              <circle cx="34" cy="32" r="6" fill="#0062E0" />
-              <rect x="28" y="44" width="12" height="28" rx="6" fill="#0062E0" />
-
-              {/* s letter with upward arrow at top-right */}
-              <path
-                d="M60 25H77V42L70 35L57 48L51 42L64 29L60 25Z"
-                fill="#0062E0"
-              />
-              <path
-                d="M52 46C55 42 61 40 68 44C74 48 74 54 70 59L55 64C49 66 48 70 52 74C56 77 65 77 71 72"
-                stroke="#0062E0"
-                strokeWidth="7"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </>
-          )}
-        </svg>
+        {isWhite ? (
+          <img
+            src="/idea-support-mark.png"
+            alt="Idea Support Mark"
+            className="w-full h-full object-contain"
+          />
+        ) : (
+          <div
+            className="w-full h-full"
+            style={{
+              backgroundColor: maskColor,
+              WebkitMaskImage: "url(/idea-support-mark.png)",
+              WebkitMaskSize: "contain",
+              WebkitMaskRepeat: "no-repeat",
+              WebkitMaskPosition: "center",
+              maskImage: "url(/idea-support-mark.png)",
+              maskSize: "contain",
+              maskRepeat: "no-repeat",
+              maskPosition: "center",
+            }}
+          />
+        )}
       </div>
 
+      {/* Official Typography from assets/idea-support-icon.png */}
       {showText && (
-        <span
-          className={`font-bold font-sans ${textColor} ${textSizes[size]} leading-none`}
-        >
-          idea<span className="opacity-90 font-medium">.support</span>
-        </span>
+        <div className="flex items-center shrink-0">
+          {isWhite ? (
+            <img
+              src="/idea-support-text.png"
+              alt="idea.support"
+              className={`${textHeights[size]} w-auto object-contain`}
+            />
+          ) : (
+            <div
+              className={`${textHeights[size]} w-28 sm:w-32`}
+              style={{
+                backgroundColor: maskColor,
+                WebkitMaskImage: "url(/idea-support-text.png)",
+                WebkitMaskSize: "contain",
+                WebkitMaskRepeat: "no-repeat",
+                WebkitMaskPosition: "left center",
+                maskImage: "url(/idea-support-text.png)",
+                maskSize: "contain",
+                maskRepeat: "no-repeat",
+                maskPosition: "left center",
+              }}
+            />
+          )}
+        </div>
       )}
     </div>
   );

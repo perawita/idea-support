@@ -7,8 +7,19 @@ import { PertaminaLogo, AquamanPoolsLogo, SuperEpicLogo } from "@/components/Cli
 import Footer from "@/components/Footer";
 
 export default function KlienKamiPage() {
+  const logos = [
+    { id: "pertamina-1", component: <PertaminaLogo /> },
+    { id: "aquaman-1", component: <AquamanPoolsLogo /> },
+    { id: "super-epic-1", component: <SuperEpicLogo /> },
+    { id: "aquaman-2", component: <AquamanPoolsLogo /> },
+    { id: "pertamina-2", component: <PertaminaLogo /> },
+    { id: "aquaman-3", component: <AquamanPoolsLogo /> },
+    { id: "super-epic-2", component: <SuperEpicLogo /> },
+    { id: "aquaman-4", component: <AquamanPoolsLogo /> },
+  ];
+
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-[#EDF5FE] selection:bg-[#0062E0] selection:text-white">
+    <div className="min-h-screen flex flex-col justify-between bg-[#DAE5F6] selection:bg-[#0062E0] selection:text-white">
       {/* Top Navbar */}
       <Navbar activePage="Klien Kami" />
 
@@ -22,31 +33,54 @@ export default function KlienKamiPage() {
           subtitle="Kami bangga telah dipercaya oleh berbagai bisnis dan institusi dalam merancang serta mengembangkan produk digital berkualitas."
         />
 
-        {/* White Horizontal Client Logos Area matching Screenshot 2 */}
+        {/* White Horizontal Client Logos Area with Infinite Moving Animation */}
         <section
           aria-label="Daftar Logo Klien"
           className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-2"
         >
-          <div className="w-full bg-white rounded-2xl sm:rounded-3xl border border-[#D0E3F8] shadow-sm py-8 sm:py-11 px-6 sm:px-10 overflow-x-auto scrollbar-none">
-            {/* Desktop: Single balanced horizontal row / Mobile: Smooth horizontal scroll */}
-            <div className="flex items-center justify-center sm:justify-between min-w-[650px] lg:min-w-0 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
-              <div className="flex items-center justify-center shrink-0 transition-transform hover:scale-105 duration-200">
-                <PertaminaLogo className="h-6 sm:h-7 md:h-8" />
-              </div>
-              <div className="flex items-center justify-center shrink-0 transition-transform hover:scale-105 duration-200">
-                <AquamanPoolsLogo className="h-6 sm:h-7 md:h-8" />
-              </div>
-              <div className="flex items-center justify-center shrink-0 transition-transform hover:scale-105 duration-200">
-                <SuperEpicLogo className="h-8 sm:h-9 md:h-10" />
-              </div>
-              <div className="flex items-center justify-center shrink-0 transition-transform hover:scale-105 duration-200">
-                <AquamanPoolsLogo className="h-6 sm:h-7 md:h-8" />
-              </div>
-              <div className="flex items-center justify-center shrink-0 transition-transform hover:scale-105 duration-200">
-                <SuperEpicLogo className="h-8 sm:h-9 md:h-10" />
-              </div>
-              <div className="flex items-center justify-center shrink-0 transition-transform hover:scale-105 duration-200">
-                <AquamanPoolsLogo className="h-6 sm:h-7 md:h-8" />
+          <div className="relative w-full bg-white rounded-2xl sm:rounded-3xl border border-[#D0E3F8] shadow-sm py-7 sm:py-10 px-4 sm:px-6 overflow-hidden">
+            {/* Subtle gradient edge masks for smooth fade in/out */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 md:w-36 bg-gradient-to-r from-white via-white/80 to-transparent z-10"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 md:w-36 bg-gradient-to-l from-white via-white/80 to-transparent z-10"
+            />
+
+            {/* Marquee Track Container (Moves right to left like homepage) */}
+            <div
+              className="client-logo-marquee-container relative w-full overflow-hidden py-2.5 sm:py-3"
+              style={{ "--client-logo-speed": "28s" } as React.CSSProperties}
+            >
+              <div className="client-logo-marquee flex items-center opacity-90 transition-opacity hover:opacity-100">
+                {/* Track 1: Original Track */}
+                <div className="flex items-center shrink-0 justify-around gap-10 sm:gap-14 md:gap-16 lg:gap-20 pr-10 sm:pr-14 md:pr-16 lg:pr-20">
+                  {logos.map((item) => (
+                    <div
+                      key={item.id}
+                      className="flex items-center justify-center shrink-0 px-2 transition-transform duration-200 hover:scale-105"
+                    >
+                      {item.component}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Track 2: Duplicate Track for seamless infinite loop */}
+                <div
+                  aria-hidden="true"
+                  className="flex items-center shrink-0 justify-around gap-10 sm:gap-14 md:gap-16 lg:gap-20 pr-10 sm:pr-14 md:pr-16 lg:pr-20"
+                >
+                  {logos.map((item) => (
+                    <div
+                      key={`dup-${item.id}`}
+                      className="flex items-center justify-center shrink-0 px-2 transition-transform duration-200 hover:scale-105"
+                    >
+                      {item.component}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

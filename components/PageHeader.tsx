@@ -23,20 +23,38 @@ export default function PageHeader({
           className="w-2.5 h-2.5 rounded-full bg-[#0062E0] ring-4 ring-[#D0E3F8] shrink-0"
           aria-hidden="true"
         />
-        <span className="text-xs sm:text-[13.5px] font-medium text-[#1e293b]">
+        <span className="text-[13px] font-medium text-[#1e293b]">
           {badgeText}
         </span>
       </div>
 
       {/* Main Heading */}
-      <h1 className="text-3xl sm:text-4xl md:text-[44px] lg:text-[48px] font-bold tracking-tight text-center leading-[1.2] flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1">
-        <span className="text-[#0062E0]">{titleBlue}</span>
-        {titleDark && <span className="text-[#171717]">{titleDark}</span>}
+      <h1 className="text-3xl sm:text-4xl md:text-[44px] lg:text-[48px] font-bold tracking-tight text-center leading-[1.2] flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+        <span className="text-[#004CD3]">{titleBlue}</span>
+        {titleDark === "idea.support" ? (
+          <div
+            className="h-8 sm:h-10 md:h-11 w-44 sm:w-56 md:w-64 inline-block align-middle"
+            style={{
+              backgroundColor: "#171717",
+              WebkitMaskImage: "url(/idea-support-text.png)",
+              WebkitMaskSize: "contain",
+              WebkitMaskRepeat: "no-repeat",
+              WebkitMaskPosition: "left center",
+              maskImage: "url(/idea-support-text.png)",
+              maskSize: "contain",
+              maskRepeat: "no-repeat",
+              maskPosition: "left center",
+            }}
+            aria-label="idea.support"
+          />
+        ) : (
+          titleDark && <span className="text-[#171717]">{titleDark}</span>
+        )}
       </h1>
 
       {/* Subtitle if available */}
       {subtitle && (
-        <p className="mt-4 text-[#666666] text-sm sm:text-base max-w-2xl leading-relaxed">
+        <p className="mt-4 text-[#666666] text-[14px] max-w-2xl leading-relaxed">
           {subtitle}
         </p>
       )}
