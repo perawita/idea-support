@@ -3,23 +3,25 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import PageHeader from "@/components/PageHeader";
-import { PertaminaLogo, AquamanPoolsLogo, SuperEpicLogo } from "@/components/ClientLogos";
+import { PertaminaLogo, AquamanPoolsLogo, SuperEpicLogo, QuickTopUpLogo, RaevelLogo } from "@/components/ClientLogos";
 import Footer from "@/components/Footer";
 
 export default function KlienKamiPage() {
   const logos = [
     { id: "pertamina-1", component: <PertaminaLogo /> },
+    { id: "quick-topup-1", component: <QuickTopUpLogo /> },
     { id: "aquaman-1", component: <AquamanPoolsLogo /> },
+    { id: "raevel-1", component: <RaevelLogo /> },
     { id: "super-epic-1", component: <SuperEpicLogo /> },
-    { id: "aquaman-2", component: <AquamanPoolsLogo /> },
     { id: "pertamina-2", component: <PertaminaLogo /> },
-    { id: "aquaman-3", component: <AquamanPoolsLogo /> },
+    { id: "quick-topup-2", component: <QuickTopUpLogo /> },
+    { id: "aquaman-2", component: <AquamanPoolsLogo /> },
+    { id: "raevel-2", component: <RaevelLogo /> },
     { id: "super-epic-2", component: <SuperEpicLogo /> },
-    { id: "aquaman-4", component: <AquamanPoolsLogo /> },
   ];
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-[#DAE5F6] selection:bg-[#0062E0] selection:text-white">
+    <div className="min-h-screen flex flex-col justify-between bg-transparent selection:bg-[#0062E0] selection:text-white">
       {/* Top Navbar */}
       <Navbar activePage="Klien Kami" />
 
@@ -27,9 +29,8 @@ export default function KlienKamiPage() {
       <main className="flex-1 pb-16 sm:pb-24">
         {/* Page Header */}
         <PageHeader
-          badgeText="Klien idea.support"
+          badgeText="Klien Kami"
           titleBlue="Lebih dari 10 ++ Bisnis Percaya Kami"
-          titleDark="idea.support"
           subtitle="Kami bangga telah dipercaya oleh berbagai bisnis dan institusi dalam merancang serta mengembangkan produk digital berkualitas."
         />
 

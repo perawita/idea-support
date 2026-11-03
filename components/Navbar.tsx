@@ -4,27 +4,28 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import IdeaSupportLogo from "./IdeaSupportLogo";
+import ContactModal from "./ContactModal";
 
 export interface NavbarProps {
-  activePage?: "Layanan" | "Portofolio" | "Klien Kami" | "Tentang Kami" | "Tim" | "Kontak";
+  activePage?: "Beranda" | "Layanan" | "Portofolio" | "Klien Kami" | "Tentang Kami" | "Tim" | "Kontak";
 }
 
 interface NavItem {
-  label: "Layanan" | "Portofolio" | "Klien Kami" | "Tentang Kami" | "Tim" | "Kontak";
+  label: "Beranda" | "Layanan" | "Portofolio" | "Tentang Kami" | "Kontak";
   href: string;
 }
 
 const navItems: NavItem[] = [
+  { label: "Beranda", href: "/" },
   { label: "Layanan", href: "/layanan" },
   { label: "Portofolio", href: "/portofolio" },
-  { label: "Klien Kami", href: "/klien-kami" },
   { label: "Tentang Kami", href: "/tentang-kami" },
-  { label: "Tim", href: "/tim" },
   { label: "Kontak", href: "/kontak" },
 ];
 
 export default function Navbar({ activePage }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [contactModalOpen, setContactModalOpen] = useState(false);
   const pathname = usePathname();
 
   // Determine which nav item is currently active
@@ -33,43 +34,41 @@ export default function Navbar({ activePage }: NavbarProps) {
       return activePage === item.label;
     }
     if (!pathname) return false;
+    if (item.href === "/" && pathname === "/") return true;
     if (item.href === "/layanan" && pathname.startsWith("/layanan")) return true;
     if (item.href === "/portofolio" && pathname.startsWith("/portofolio")) return true;
-    if (item.href === "/klien-kami" && pathname.startsWith("/klien-kami")) return true;
     if (item.href === "/tentang-kami" && pathname.startsWith("/tentang-kami")) return true;
-    if (item.href === "/tim" && pathname.startsWith("/tim")) return true;
     if (item.href === "/kontak" && pathname.startsWith("/kontak")) return true;
     return false;
   };
 
   return (
-    <header className="w-full pt-6 md:pt-[45px] px-4 sm:px-6 min-[1340px]:px-0 max-w-[1298px] mx-auto relative z-50">
+    <header className="w-full pt-4 md:pt-6 px-4 sm:px-6 min-[1340px]:px-0 max-w-[1298px] mx-auto relative z-50">
       <nav
         aria-label="Navigasi Utama"
-        className="w-full h-[64px] sm:h-[75px] bg-[#004CD3] rounded-[41px] px-6 sm:px-8 lg:px-9 flex items-center justify-between shadow-md transition-all duration-200"
-        style={{ opacity: 1 }}
+        className="w-full h-[64px] sm:h-[72px] bg-white rounded-full px-4 sm:px-6 flex items-center justify-between shadow-sm border border-gray-100 transition-all duration-200"
       >
         {/* Brand Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2 text-white hover:opacity-95 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80 rounded-full"
+          className="flex items-center gap-2 hover:opacity-90 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3]/60 rounded-full"
           aria-label="Idea.support Beranda"
         >
-          <IdeaSupportLogo variant="white" size="md" />
+          <IdeaSupportLogo variant="primary" size="md" />
         </Link>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+        <div className="hidden lg:flex items-center gap-1">
           {navItems.map((item) => {
             const isActive = getIsActive(item);
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                className={`text-[15px] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80 ${
+                className={`text-[15px] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3]/60 rounded-full px-4 py-2 ${
                   isActive
-                    ? "bg-white text-[#004CD3] font-semibold px-6 sm:px-7 py-2 sm:py-2.5 rounded-full shadow-xs"
-                    : "text-white hover:text-white/85 font-medium px-1 py-1"
+                    ? "bg-[#004CD3] text-white font-semibold shadow-xs"
+                    : "text-gray-600 hover:text-[#004CD3] hover:bg-blue-50/60 font-medium"
                 }`}
               >
                 {item.label}
@@ -78,12 +77,22 @@ export default function Navbar({ activePage }: NavbarProps) {
           })}
         </div>
 
-        {/* Mobile / Tablet Menu Button */}
-        <div className="flex lg:hidden items-center">
+        {/* CTA Button + Mobile Menu */}
+        <div className="flex items-center gap-3">
+          {/* Hubungi Kami - Desktop */}
+          <button
+            type="button"
+            onClick={() => setContactModalOpen(true)}
+            className="hidden lg:inline-flex items-center px-5 py-2.5 bg-[#004CD3] hover:bg-[#003BAA] text-white text-[15px] font-semibold rounded-full transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3]/60 shadow-sm cursor-pointer"
+          >
+            Hubungi Kami
+          </button>
+
+          {/* Mobile / Tablet Menu Button */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-white p-1.5 rounded-full hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            className="flex lg:hidden text-gray-700 p-2 rounded-full hover:bg-gray-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3]"
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
             aria-label={mobileMenuOpen ? "Tutup menu" : "Buka menu navigasi"}
@@ -97,11 +106,7 @@ export default function Navbar({ activePage }: NavbarProps) {
                 stroke="currentColor"
                 aria-hidden="true"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
               <svg
@@ -112,11 +117,7 @@ export default function Navbar({ activePage }: NavbarProps) {
                 stroke="currentColor"
                 aria-hidden="true"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
               </svg>
             )}
           </button>
@@ -127,9 +128,9 @@ export default function Navbar({ activePage }: NavbarProps) {
       {mobileMenuOpen && (
         <div
           id="mobile-menu"
-          className="lg:hidden absolute top-full left-4 right-4 mt-3 bg-[#004CD3] rounded-2xl p-4 shadow-xl border border-white/10 transition-all duration-200 ease-out"
+          className="lg:hidden absolute top-full left-4 right-4 mt-3 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 transition-all duration-200 ease-out"
         >
-          <ul className="flex flex-col gap-1.5">
+          <ul className="flex flex-col gap-1">
             {navItems.map((item) => {
               const isActive = getIsActive(item);
               return (
@@ -139,8 +140,8 @@ export default function Navbar({ activePage }: NavbarProps) {
                     onClick={() => setMobileMenuOpen(false)}
                     className={`block px-4 py-2.5 rounded-xl font-medium text-base transition-colors ${
                       isActive
-                        ? "bg-white text-[#004CD3] font-semibold shadow-xs"
-                        : "text-white hover:bg-white/10"
+                        ? "bg-[#004CD3] text-white font-semibold shadow-xs"
+                        : "text-gray-600 hover:bg-blue-50/60 hover:text-[#004CD3]"
                     }`}
                   >
                     {item.label}
@@ -148,9 +149,29 @@ export default function Navbar({ activePage }: NavbarProps) {
                 </li>
               );
             })}
+            <li className="pt-2 border-t border-gray-100 mt-1">
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setContactModalOpen(true);
+                }}
+                className="w-full block px-4 py-2.5 rounded-xl font-semibold text-base text-white bg-[#004CD3] hover:bg-[#003BAA] text-center transition-colors cursor-pointer"
+              >
+                Hubungi Kami
+              </button>
+            </li>
           </ul>
         </div>
       )}
+
+      {/* Popup Modal Konsultasi Gratis */}
+      <ContactModal
+        isOpen={contactModalOpen}
+        onClose={() => setContactModalOpen(false)}
+        serviceTitle="Gratis"
+        category="Konsultasi"
+      />
     </header>
   );
 }

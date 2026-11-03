@@ -6,10 +6,11 @@ export interface ConceptModalProps {
   isOpen: boolean;
   onClose: () => void;
   title: string;
-  category: "Website" | "Mobile";
+  category: string;
   description: string;
   features?: string[];
   techStack?: string[];
+  image?: string;
   onConsult?: () => void;
 }
 
@@ -21,6 +22,7 @@ export default function ConceptModal({
   description,
   features = ["Tampilan Modern & Responsif", "Optimasi Performa Tinggi", "Struktur Navigasi Intuitif"],
   techStack = ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+  image,
   onConsult,
 }: ConceptModalProps) {
   useEffect(() => {
@@ -80,8 +82,14 @@ export default function ConceptModal({
         </p>
 
         {/* Interactive Mockup Preview Display */}
-        <div className="bg-[#EDF5FE] rounded-2xl p-6 border border-[#D0E3F8] mb-6 flex flex-col items-center justify-center min-h-[220px]">
-          {category === "Website" ? (
+        <div className="bg-[#EDF5FE] rounded-2xl p-3 sm:p-4 border border-[#D0E3F8] mb-6 flex flex-col items-center justify-center min-h-[220px] overflow-hidden">
+          {image ? (
+            <img
+              src={image}
+              alt={title}
+              className="w-full h-auto max-h-[380px] object-contain rounded-xl shadow-xs"
+            />
+          ) : category === "Website" ? (
             <div className="w-full max-w-md bg-white rounded-xl shadow-md border border-[#D0E3F8] overflow-hidden">
               <div className="bg-[#F0F4F8] px-3 py-2 border-b border-slate-200 flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-red-400" />

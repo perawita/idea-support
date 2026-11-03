@@ -3,5 +3,5 @@ export interface ApiResponse<T> {
   message: string;
   data: T | null;
   meta?: Record<string, unknown> | null;
-  errors?: Record<string, string[]> | number | null;
+  errors?: Record<string, string[]> | null;
 }

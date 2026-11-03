@@ -1,12 +1,5 @@
 ﻿import { Pool } from "pg";
 
-// pusat gerbang koneksi (connection pool) ke database PostgreSQL
-// agar tidak perlu membuat koneksi baru setiap kali ada request
-// menghemat resource dan mempercepat respons
-
-// membaca kredensial database dari file .env
-// untuk database PostgreSQL
-
 const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,

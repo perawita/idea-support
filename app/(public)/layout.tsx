@@ -33,7 +33,14 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${poppins.variable} h-full antialiased font-sans`}
     >
-      <body className="min-h-screen flex flex-col bg-[#DAE5F6] text-[#1e293b] font-sans">
+      <body
+        className="min-h-screen flex flex-col text-[#1e293b] font-sans"
+        style={{
+          backgroundColor: '#DAE5F6',
+          backgroundImage: 'linear-gradient(rgba(100,140,210,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(100,140,210,0.06) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
+      >
         {children}
       </body>
     </html>

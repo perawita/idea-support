@@ -5,9 +5,9 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-[#DAE5F6] selection:bg-[#0062E0] selection:text-white">
+    <div className="min-h-screen flex flex-col justify-between bg-transparent selection:bg-[#0062E0] selection:text-white">
       {/* Top Navbar */}
-      <Navbar />
+      <Navbar activePage="Beranda" />
 
       {/* Main Content Area */}
       <main className="flex-1 flex flex-col justify-center pb-6 sm:pb-10">

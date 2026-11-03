@@ -1,18 +1,24 @@
-export interface Client { // nama interface Client dari tabel klien_kami
+export interface Client {
     id: number;
-    nama_klien: string;
-    logo_klien: string | null;
-    created_at: Date;
-    updated_at: Date;
-    deleted_at: Date | null;
+    name?: string;
+    nama_klien?: string;
+    logo_url?: string | null;
+    logo_klien?: string | null;
+    created_at: Date | string;
+    updated_at: Date | string;
+    deleted_at: Date | string | null;
 }
 
 export interface CreateClientDTO {
-    nama_klien: string;
-    logo_klien?: string;
+    name?: string;
+    nama_klien?: string;
+    logo_url?: string;
+    logo_klien?: string | null;
 }
 
 export interface UpdateClientDTO {
+    name?: string;
     nama_klien?: string;
-    logo_klien?: string;
+    logo_url?: string;
+    logo_klien?: string | null;
 }

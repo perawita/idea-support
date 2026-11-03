@@ -8,6 +8,7 @@ interface TeamMemberItem {
   id: number;
   name: string;
   role: string;
+  image?: string;
   linkedinUrl: string;
   instagramUrl: string;
 }
@@ -15,43 +16,39 @@ interface TeamMemberItem {
 const teamMembers: TeamMemberItem[] = [
   {
     id: 1,
-    name: "Nama anggota",
-    role: "Peran / jabatan",
+    name: "Agus",
+    role: "BackEnd Developer",
     linkedinUrl: "https://linkedin.com",
     instagramUrl: "https://instagram.com",
   },
   {
     id: 2,
-    name: "Nama anggota",
-    role: "Peran / jabatan",
+    name: "Gibran",
+    role: "BackEnd Developer",
     linkedinUrl: "https://linkedin.com",
     instagramUrl: "https://instagram.com",
   },
   {
     id: 3,
-    name: "Nama anggota",
-    role: "Peran / jabatan",
+    name: "Ryan",
+    role: "UI/UX Designer",
+    image: "/assets/ryan.png",
     linkedinUrl: "https://linkedin.com",
     instagramUrl: "https://instagram.com",
   },
   {
     id: 4,
-    name: "Nama anggota",
-    role: "Peran / jabatan",
+    name: "Erdit",
+    role: "FrontEnd Developer",
+    image: "/assets/erdit.png",
     linkedinUrl: "https://linkedin.com",
     instagramUrl: "https://instagram.com",
   },
   {
     id: 5,
-    name: "Nama anggota",
-    role: "Peran / jabatan",
-    linkedinUrl: "https://linkedin.com",
-    instagramUrl: "https://instagram.com",
-  },
-  {
-    id: 6,
-    name: "Nama anggota",
-    role: "Peran / jabatan",
+    name: "Agil",
+    role: "FrontEnd Developer",
+    image: "/assets/agil.png",
     linkedinUrl: "https://linkedin.com",
     instagramUrl: "https://instagram.com",
   },
@@ -59,7 +56,7 @@ const teamMembers: TeamMemberItem[] = [
 
 export default function TimPage() {
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-[#DAE5F6] selection:bg-[#004CD3] selection:text-white">
+    <div className="min-h-screen flex flex-col justify-between bg-transparent selection:bg-[#004CD3] selection:text-white">
       {/* Top Navbar */}
       <Navbar activePage="Tim" />
 
@@ -103,32 +100,42 @@ export default function TimPage() {
                 key={member.id}
                 className="bg-white rounded-[28px] border border-[#D0E3F8] overflow-hidden shadow-xs hover:shadow-md transition-all duration-200 flex flex-col"
               >
-                {/* Top Half: Photo Placeholder Box */}
-                <div className="bg-[#EDF5FE] pt-12 pb-10 px-6 flex flex-col items-center justify-center text-center">
-                  {/* Avatar Icon */}
-                  <div className="w-20 h-20 rounded-full bg-[#E2EEFC] border border-[#CBDFF5] flex items-center justify-center text-slate-400 mb-4 shadow-xs">
-                    <svg
-                      className="w-10 h-10 text-slate-400"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={1.5}
-                      aria-hidden="true"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                      />
-                    </svg>
-                  </div>
+                {/* Top Half: Photo Box */}
+                <div className="bg-[#EDF5FE] pt-10 pb-8 px-6 flex flex-col items-center justify-center text-center">
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-24 h-24 rounded-full object-cover object-top border-2 border-[#CBDFF5] shadow-sm mb-3"
+                    />
+                  ) : (
+                    <>
+                      {/* Avatar Icon */}
+                      <div className="w-20 h-20 rounded-full bg-[#E2EEFC] border border-[#CBDFF5] flex items-center justify-center text-slate-400 mb-4 shadow-xs">
+                        <svg
+                          className="w-10 h-10 text-slate-400"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={1.5}
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                          />
+                        </svg>
+                      </div>
 
-                  <span className="font-semibold text-slate-700 text-sm sm:text-[15px] mb-1">
-                    Foto anggota
-                  </span>
-                  <span className="text-[10px] sm:text-[11px] text-slate-400 font-medium tracking-wider uppercase">
-                    PLACEHOLDER · DAPAT DIGANTI
-                  </span>
+                      <span className="font-semibold text-slate-700 text-sm sm:text-[15px] mb-1">
+                        Foto anggota
+                      </span>
+                      <span className="text-[10px] sm:text-[11px] text-slate-400 font-medium tracking-wider uppercase">
+                        PLACEHOLDER · DAPAT DIGANTI
+                      </span>
+                    </>
+                  )}
                 </div>
 
                 {/* Bottom Half: Name, Role, and Social Links */}

@@ -29,7 +29,14 @@ export default function AppRootLayout({
       lang="id"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-screen bg-[#F8FAFC] text-slate-800 antialiased font-sans flex">
+      <body
+        className="min-h-screen text-slate-800 antialiased font-sans flex"
+        style={{
+          backgroundColor: '#DAE5F6',
+          backgroundImage: 'linear-gradient(rgba(100,140,210,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(100,140,210,0.06) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
+      >
         {/* Sidebar Navigasi Admin */}
         <AdminSidebar />
 

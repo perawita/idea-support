@@ -4,658 +4,290 @@ import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-interface ProjectOption {
-  id: string;
-  title: string;
-  desc: string;
-  icon: React.ReactNode;
-}
-
-const projectOptions: ProjectOption[] = [
-  {
-    id: "company-profile",
-    title: "Company Profile",
-    desc: "Branding profesional & portofolio institusi",
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      </svg>
-    ),
-  },
-  {
-    id: "ecommerce",
-    title: "Toko Online / E-Commerce",
-    desc: "Katalog, transaksi, & integrasi kurir",
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-      </svg>
-    ),
-  },
-  {
-    id: "sistem-informasi",
-    title: "Sistem Informasi",
-    desc: "Manajemen data, inventori & operasional",
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-      </svg>
-    ),
-  },
-  {
-    id: "aplikasi-web",
-    title: "Aplikasi Web",
-    desc: "SaaS, portal interaktif, & dashboard custom",
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-      </svg>
-    ),
-  },
-  {
-    id: "landing-page",
-    title: "Landing Page",
-    desc: "1 eksklusif konversi iklan & pemasaran produk",
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    ),
-  },
-  {
-    id: "lainnya",
-    title: "Lainnya / Ide Unik",
-    desc: "Eksplorasi modul kustom & integrasi API",
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-      </svg>
-    ),
-  },
+const websiteOptions = [
+  "Company Profile Perusahaan",
+  "Toko Online / E-Commerce",
+  "Sistem Informasi",
+  "Aplikasi Web Custom",
+  "Landing Page",
+  "Lainnya / Ide Unik",
 ];
 
+const budgetOptions = [
+  "Di bawah Rp1.000.000",
+  "Rp1.000.000 – Rp3.000.000",
+  "Rp3.000.000 – Rp5.000.000",
+  "Rp5.000.000 – Rp10.000.000",
+  "Rp10.000.000 – Rp20.000.000",
+  "Di atas Rp20.000.000",
+  "Belum menentukan anggaran / Butuh konsultasi",
+];
+
+const WA_NUMBER = "6285770037803";
+
 export default function KontakPage() {
-  const [selectedProjectType, setSelectedProjectType] = useState<string>("landing-page");
-  const [budget, setBudget] = useState<string>("");
-  const [features, setFeatures] = useState<string>("");
-  const [referenceUrl, setReferenceUrl] = useState<string>("");
-  const [timeline, setTimeline] = useState<string>("1 Bulan (Standar)");
+  const [name, setName] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+  const [websiteNeed, setWebsiteNeed] = useState("");
+  const [budget, setBudget] = useState("");
 
-  // Form Fields
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [whatsapp, setWhatsapp] = useState<string>("");
-  const [organization, setOrganization] = useState<string>("");
-  const [message, setMessage] = useState<string>("");
-  const [agreeProposal, setAgreeProposal] = useState<boolean>(false);
-  const [submitted, setSubmitted] = useState<boolean>(false);
-
-  // Accordion toggles for FAQ
-  const [faq1Open, setFaq1Open] = useState<boolean>(false);
-  const [faq2Open, setFaq2Open] = useState<boolean>(true);
-
-  const currentOption = projectOptions.find((p) => p.id === selectedProjectType) || projectOptions[4];
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleWhatsApp = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+
+    const pesan =
+      `Halo IDEA.support, saya ingin konsultasi pembuatan website.\n\n` +
+      `Nama: ${name || "-"}\n` +
+      `No. WhatsApp: ${whatsapp || "-"}\n` +
+      `Kebutuhan: ${websiteNeed || "-"}\n` +
+      `Anggaran: ${budget || "-"}\n\n` +
+      `Mohon informasi lebih lanjut mengenai layanan dan estimasi biaya. Terima kasih.`;
+
+    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(pesan)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
-  const scrollToForm = () => {
-    const el = document.getElementById("project-form-section");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const inputClass =
+    "w-full px-4 py-3 rounded-xl border border-[#D0E3F8] bg-white text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:border-[#004CD3] focus:ring-1 focus:ring-[#004CD3] transition-colors";
+
+  const selectClass =
+    "w-full px-4 py-3 rounded-xl border border-[#D0E3F8] bg-white text-slate-900 text-sm focus:outline-none focus:border-[#004CD3] focus:ring-1 focus:ring-[#004CD3] transition-colors appearance-none cursor-pointer";
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-[#DAE5F6] selection:bg-[#004CD3] selection:text-white">
-      {/* Top Navbar */}
+    <div className="min-h-screen flex flex-col justify-between bg-transparent selection:bg-[#004CD3] selection:text-white">
       <Navbar activePage="Kontak" />
 
-      {/* Main Content */}
       <main className="flex-1 pb-16 sm:pb-24 pt-8 sm:pt-10 px-4 sm:px-6 min-[1340px]:px-0">
-        <div className="max-w-[1298px] mx-auto space-y-8">
-          {/* Hero Banner Card */}
-          <section
-            aria-label="Hero Kontak"
-            className="bg-white rounded-3xl sm:rounded-[36px] border border-[#D0E3F8] p-8 sm:p-12 text-center shadow-xs"
-          >
-            <h1 className="text-3xl sm:text-4xl md:text-[42px] font-bold text-[#004CD3] tracking-tight mb-3">
-              Wujudkan Ide Digitalmu Hari Ini
-            </h1>
-            <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto mb-6">
-              Ceritakan kebutuhan Anda. Mari mulai dari brief yang jelas.
-            </p>
-            <button
-              type="button"
-              onClick={scrollToForm}
-              className="bg-[#004CD3] hover:bg-[#003B86] text-white font-semibold text-sm sm:text-base px-8 py-3 rounded-full transition-all duration-150 shadow-xs cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3]"
-            >
-              Hubungi Kami
-            </button>
-          </section>
+        <div className="max-w-[1298px] mx-auto">
 
-          {/* Two Columns Grid */}
+          {/* Two-column layout */}
           <section
-            id="project-form-section"
-            aria-label="Formulir Brief dan Kontak"
-            className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start"
+            id="kontak-section"
+            aria-label="Kontak dan Konsultasi"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start"
           >
-            {/* Left Column: Hubungi Kami & Multi-Step Configurator */}
-            <div className="lg:col-span-6 space-y-6">
-              {/* Card 1: Hubungi Kami Overview */}
-              <div className="bg-white rounded-3xl border border-[#D0E3F8] p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 shadow-xs">
-                {/* Illustration Container */}
-                <div className="w-28 sm:w-36 h-28 sm:h-36 shrink-0 relative flex items-center justify-center bg-[#EDF5FE] rounded-2xl border border-[#CBDFF5]">
-                  <svg
-                    className="w-16 h-16 text-[#004CD3]"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M18 9a5 5 0 00-10 0v2a2 2 0 002 2h6a2 2 0 002-2V9z"
-                    />
-                  </svg>
-                  <div className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[#004CD3] text-white flex items-center justify-center shadow-xs">
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                    </svg>
-                  </div>
-                </div>
-
-                <div>
-                  <h2 className="text-2xl sm:text-[26px] font-bold text-slate-900 leading-tight">
-                    Hubungi <span className="text-[#004CD3]">Kami</span>
-                  </h2>
-                  <p className="text-slate-600 text-xs sm:text-[13px] leading-relaxed mt-2.5">
-                    Hubungi kami untuk konsultasi gratis. Kami siap membantu kebutuhan website, branding, dan digital marketing bisnis anda dengan solusi terbaik.
-                  </p>
-                </div>
+            {/* ── LEFT COLUMN ── */}
+            <div className="space-y-6">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2">
+                <span className="text-[#38BDF8] font-bold text-lg leading-none">[</span>
+                <span className="text-[#004CD3] font-bold text-xs tracking-[0.2em] uppercase">Hubungi Kami</span>
+                <span className="text-[#38BDF8] font-bold text-lg leading-none">]</span>
               </div>
 
-              {/* Card 2: Interactive Configurator */}
-              <div className="bg-white rounded-3xl border border-[#D0E3F8] p-6 sm:p-8 shadow-xs space-y-7">
-                {/* Step 1 */}
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-6 h-6 rounded-full bg-[#004CD3] text-white text-xs font-bold inline-flex items-center justify-center">
-                        1
-                      </span>
-                      <h3 className="font-bold text-slate-900 text-base">
-                        Tentukan Jenis Proyek
-                      </h3>
-                    </div>
-                    <span className="text-xs text-slate-400">Pilih salah satu</span>
+              {/* Heading */}
+              <div>
+                <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">
+                  Siap bikin website bisnis yang lebih{" "}
+                  <span className="text-[#004CD3]">profesional?</span>
+                </h1>
+                <p className="mt-3 text-slate-500 text-sm sm:text-base leading-relaxed">
+                  Ceritakan kebutuhan Anda. Kami bantu arahkan solusi yang paling sesuai.
+                </p>
+              </div>
+
+              {/* Contact Cards — 2x2 grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {/* WhatsApp */}
+                <a
+                  href={`https://wa.me/${WA_NUMBER}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3.5 bg-white rounded-2xl border border-[#D0E3F8] p-4 hover:border-[#004CD3]/40 hover:shadow-sm transition-all group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-[#25D366]/10 flex items-center justify-center shrink-0">
+                    <svg className="w-5 h-5 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
                   </div>
+                  <div>
+                    <div className="font-bold text-slate-900 text-sm">WhatsApp</div>
+                    <div className="text-xs text-slate-500 mt-0.5">+62 857-7003-7803</div>
+                  </div>
+                </a>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {projectOptions.map((opt) => {
-                      const isSelected = selectedProjectType === opt.id;
-                      return (
-                        <button
-                          key={opt.id}
-                          type="button"
-                          onClick={() => setSelectedProjectType(opt.id)}
-                          className={`p-3.5 rounded-2xl border text-left transition-all duration-150 relative cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3] ${
-                            isSelected
-                              ? "border-[#004CD3] bg-[#F4F8FE] shadow-xs ring-1 ring-[#004CD3]"
-                              : "border-[#D0E3F8] bg-white hover:bg-slate-50"
-                          }`}
-                        >
-                          {/* Checkmark badge when selected */}
-                          {isSelected && (
-                            <span className="absolute top-2.5 right-2.5 w-5 h-5 rounded-full bg-[#004CD3] text-white flex items-center justify-center">
-                              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                              </svg>
-                            </span>
-                          )}
+                {/* Instagram */}
+                <a
+                  href="https://instagram.com/idea.support"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3.5 bg-white rounded-2xl border border-[#D0E3F8] p-4 hover:border-[#004CD3]/40 hover:shadow-sm transition-all group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-pink-50 flex items-center justify-center shrink-0">
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="url(#ig-grad)" strokeWidth={1.8}>
+                      <defs>
+                        <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#f09433" />
+                          <stop offset="25%" stopColor="#e6683c" />
+                          <stop offset="50%" stopColor="#dc2743" />
+                          <stop offset="75%" stopColor="#cc2366" />
+                          <stop offset="100%" stopColor="#bc1888" />
+                        </linearGradient>
+                      </defs>
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="font-bold text-slate-900 text-sm">Instagram</div>
+                    <div className="text-xs text-slate-500 mt-0.5">@idea.support</div>
+                  </div>
+                </a>
 
-                          <div
-                            className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2.5 ${
-                              isSelected ? "bg-[#004CD3] text-white" : "bg-[#EDF5FE] text-[#004CD3]"
-                            }`}
-                          >
-                            {opt.icon}
-                          </div>
-                          <div className="font-bold text-slate-900 text-xs sm:text-[13px] leading-tight pr-5">
-                            {opt.title}
-                          </div>
-                          <p className="text-[11px] text-slate-500 leading-normal mt-1">
-                            {opt.desc}
-                          </p>
-                        </button>
-                      );
-                    })}
+                {/* TikTok */}
+                <a
+                  href="https://tiktok.com/@idea.support"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3.5 bg-white rounded-2xl border border-[#D0E3F8] p-4 hover:border-[#004CD3]/40 hover:shadow-sm transition-all group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center shrink-0">
+                    <svg className="w-5 h-5 text-slate-900" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.78 1.52V6.74a4.85 4.85 0 01-1.01-.05z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="font-bold text-slate-900 text-sm">TikTok</div>
+                    <div className="text-xs text-slate-500 mt-0.5">@idea.support</div>
+                  </div>
+                </a>
+
+                {/* Website */}
+                <a
+                  href="https://idea-support.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3.5 bg-white rounded-2xl border border-[#D0E3F8] p-4 hover:border-[#004CD3]/40 hover:shadow-sm transition-all group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
+                    <svg className="w-5 h-5 text-[#004CD3]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="font-bold text-slate-900 text-sm">Website</div>
+                    <div className="text-xs text-slate-500 mt-0.5">idea-support.com</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            {/* ── RIGHT COLUMN — Konsultasi Form ── */}
+            <div className="bg-white rounded-3xl border border-[#D0E3F8] p-6 sm:p-8 shadow-xs">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-1">
+                Konsultasi Gratis
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 mb-6 leading-relaxed">
+                Isi data singkat — langsung lanjut chat WhatsApp dengan tim kami, dibalas orang, bukan bot.
+              </p>
+
+              <form onSubmit={handleWhatsApp} className="space-y-4">
+                {/* 1. Nama */}
+                <div>
+                  <label htmlFor="konsul-name" className="block text-xs font-semibold text-slate-800 mb-1.5">
+                    Nama
+                  </label>
+                  <input
+                    id="konsul-name"
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Nama Anda"
+                    className={inputClass}
+                  />
+                </div>
+
+                {/* 2. No. WhatsApp */}
+                <div>
+                  <label htmlFor="konsul-wa" className="block text-xs font-semibold text-slate-800 mb-1.5">
+                    No. WhatsApp
+                  </label>
+                  <input
+                    id="konsul-wa"
+                    type="tel"
+                    required
+                    value={whatsapp}
+                    onChange={(e) => setWhatsapp(e.target.value)}
+                    placeholder="08xxxxxxxxxx"
+                    className={inputClass}
+                  />
+                </div>
+
+                {/* 3. Kebutuhan website */}
+                <div>
+                  <label htmlFor="konsul-need" className="block text-xs font-semibold text-slate-800 mb-1.5">
+                    Kebutuhan website untuk
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="konsul-need"
+                      required
+                      value={websiteNeed}
+                      onChange={(e) => setWebsiteNeed(e.target.value)}
+                      className={selectClass}
+                    >
+                      <option value="" disabled>Pilih jenis website</option>
+                      {websiteOptions.map((opt) => (
+                        <option key={opt} value={opt}>{opt}</option>
+                      ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                      <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
 
-                {/* Step 2 */}
+                {/* 4. Rentang anggaran */}
                 <div>
-                  <div className="flex items-center gap-2.5 mb-1.5">
-                    <span className="w-6 h-6 rounded-full bg-[#004CD3] text-white text-xs font-bold inline-flex items-center justify-center">
-                      2
-                    </span>
-                    <h3 className="font-bold text-slate-900 text-base">
-                      Berapa anggaran yang Anda siapkan?
-                    </h3>
-                  </div>
-                  <p className="text-xs text-slate-500 mb-3.5">
-                    Semua nominal adalah referensi anggaran fleksibel Anda, bukan harga paket tetap.
-                  </p>
-
-                  <div>
-                    <label
-                      htmlFor="budget-input"
-                      className="block text-xs font-semibold text-slate-800 mb-1.5"
-                    >
-                      Perkiraan Anggaran (Rp)
-                    </label>
-                    <input
-                      id="budget-input"
-                      type="text"
+                  <label htmlFor="konsul-budget" className="block text-xs font-semibold text-slate-800 mb-1.5">
+                    Berapa anggaran yang Anda siapkan?
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="konsul-budget"
+                      required
                       value={budget}
                       onChange={(e) => setBudget(e.target.value)}
-                      placeholder="Rp Contoh: 5.000.000"
-                      className="w-full px-4 py-2.5 rounded-xl border border-[#D0E3F8] bg-white text-slate-900 text-sm focus:outline-none focus:border-[#004CD3] focus:ring-1 focus:ring-[#004CD3] transition-colors"
-                    />
-                    <p className="text-[11px] text-slate-400 mt-1.5">
-                      Tuliskan perkiraan anggaran atau rentang yang Anda siapkan.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Step 3 */}
-                <div>
-                  <div className="flex items-center gap-2.5 mb-3.5">
-                    <span className="w-6 h-6 rounded-full bg-[#004CD3] text-white text-xs font-bold inline-flex items-center justify-center">
-                      3
-                    </span>
-                    <h3 className="font-bold text-slate-900 text-base">
-                      Detail Tambahan (Opsional)
-                    </h3>
-                  </div>
-
-                  <div className="space-y-3.5">
-                    <div>
-                      <label
-                        htmlFor="features-input"
-                        className="block text-xs font-semibold text-slate-800 mb-1.5"
-                      >
-                        Fitur utama yang dibutuhkan
-                      </label>
-                      <input
-                        id="features-input"
-                        type="text"
-                        value={features}
-                        onChange={(e) => setFeatures(e.target.value)}
-                        placeholder="Contoh: Pembayaran Midtrans, Blog, WhatsApp button, Multi-bahasa"
-                        className="w-full px-4 py-2.5 rounded-xl border border-[#D0E3F8] bg-white text-slate-900 text-sm focus:outline-none focus:border-[#004CD3] focus:ring-1 focus:ring-[#004CD3] transition-colors"
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                      <div>
-                        <label
-                          htmlFor="reference-input"
-                          className="block text-xs font-semibold text-slate-800 mb-1.5"
-                        >
-                          Referensi website yang disukai
-                        </label>
-                        <input
-                          id="reference-input"
-                          type="text"
-                          value={referenceUrl}
-                          onChange={(e) => setReferenceUrl(e.target.value)}
-                          placeholder="https://contoh-website.com"
-                          className="w-full px-4 py-2.5 rounded-xl border border-[#D0E3F8] bg-white text-slate-900 text-sm focus:outline-none focus:border-[#004CD3] focus:ring-1 focus:ring-[#004CD3] transition-colors"
-                        />
-                      </div>
-
-                      <div>
-                        <label
-                          htmlFor="timeline-select"
-                          className="block text-xs font-semibold text-slate-800 mb-1.5"
-                        >
-                          Target waktu pengerjaan
-                        </label>
-                        <select
-                          id="timeline-select"
-                          value={timeline}
-                          onChange={(e) => setTimeline(e.target.value)}
-                          className="w-full px-4 py-2.5 rounded-xl border border-[#D0E3F8] bg-white text-slate-900 text-sm focus:outline-none focus:border-[#004CD3] focus:ring-1 focus:ring-[#004CD3] transition-colors"
-                        >
-                          <option value="1 Bulan (Standar)">1 Bulan (Standar)</option>
-                          <option value="< 1 Bulan (Cepat)">&lt; 1 Bulan (Prioritas Cepat)</option>
-                          <option value="2 - 3 Bulan">2 - 3 Bulan (Komprehensif)</option>
-                          <option value="Fleksibel">Fleksibel / Sesuai Pembahasan</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: Informasi Kontak & Ceritakan Ide Anda Form */}
-            <div className="lg:col-span-6 space-y-6">
-              {/* Card 1: Informasi Kontak */}
-              <div className="bg-white rounded-3xl border border-[#D0E3F8] p-6 sm:p-8 shadow-xs">
-                <h2 className="text-2xl sm:text-[26px] font-bold text-[#004CD3] leading-tight mb-6">
-                  <span>Informasi </span>
-                  <span className="text-slate-900">Kontak</span>
-                </h2>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Phone */}
-                  <a
-                    href="tel:+62840653638"
-                    className="flex items-center gap-3.5 p-3 rounded-2xl hover:bg-[#EDF5FE] transition-colors group"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-[#004CD3] text-white flex items-center justify-center shrink-0 shadow-xs">
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      className={selectClass}
+                    >
+                      <option value="" disabled>Pilih rentang anggaran Anda</option>
+                      {budgetOptions.map((opt) => (
+                        <option key={opt} value={opt}>{opt}</option>
+                      ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                      <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                       </svg>
                     </div>
-                    <span className="text-xs sm:text-[13px] font-medium text-slate-800 group-hover:text-[#004CD3] transition-colors">
-                      (+62) 840-653-638
-                    </span>
-                  </a>
-
-                  {/* Email */}
-                  <a
-                    href="mailto:ideasupport@gmail.com"
-                    className="flex items-center gap-3.5 p-3 rounded-2xl hover:bg-[#EDF5FE] transition-colors group"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-[#004CD3] text-white flex items-center justify-center shrink-0 shadow-xs">
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                    <span className="text-xs sm:text-[13px] font-medium text-slate-800 group-hover:text-[#004CD3] transition-colors truncate">
-                      ideasupport@gmail.com
-                    </span>
-                  </a>
-
-                  {/* Instagram */}
-                  <a
-                    href="https://instagram.com/idea.support"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3.5 p-3 rounded-2xl hover:bg-[#EDF5FE] transition-colors group"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-[#004CD3] text-white flex items-center justify-center shrink-0 shadow-xs">
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                      </svg>
-                    </div>
-                    <span className="text-xs sm:text-[13px] font-medium text-slate-800 group-hover:text-[#004CD3] transition-colors">
-                      idea.support
-                    </span>
-                  </a>
-
-                  {/* Website */}
-                  <a
-                    href="https://idea-support.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3.5 p-3 rounded-2xl hover:bg-[#EDF5FE] transition-colors group"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-[#004CD3] text-white flex items-center justify-center shrink-0 shadow-xs">
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                      </svg>
-                    </div>
-                    <span className="text-xs sm:text-[13px] font-medium text-slate-800 group-hover:text-[#004CD3] transition-colors">
-                      .com
-                    </span>
-                  </a>
-                </div>
-              </div>
-
-              {/* Card 2: Form Ceritakan Ide Anda */}
-              <div className="bg-white rounded-3xl border border-[#D0E3F8] p-6 sm:p-8 shadow-xs space-y-4">
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
-                    Ceritakan Ide Anda
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-500 mt-1">
-                    Berikan gambaran awal proyek Anda agar kami bisa memberikan rekomendasi yang tepat.
-                  </p>
-                </div>
-
-                {/* Summary Box */}
-                <div className="bg-[#EDF5FE] border border-[#CBDFF5] rounded-2xl p-4 space-y-1.5">
-                  <div className="text-[11px] font-bold tracking-wider text-[#004CD3] uppercase">
-                    RINGKASAN PILIHAN ANDA
-                  </div>
-                  <div className="flex items-center justify-between text-xs sm:text-[13px]">
-                    <span className="text-slate-500">Tipe Proyek:</span>
-                    <span className="font-semibold text-slate-900">
-                      {currentOption.title}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-xs sm:text-[13px]">
-                    <span className="text-slate-500">Perkiraan Anggaran:</span>
-                    <span className="font-semibold text-[#004CD3]">
-                      {budget.trim() ? budget : "Sesuai input anggaran Anda"}
-                    </span>
                   </div>
                 </div>
 
-                {/* Contact Input Fields */}
-                <form onSubmit={handleSubmit} className="space-y-3.5">
-                  <div>
-                    <label
-                      htmlFor="client-name"
-                      className="block text-xs font-semibold text-slate-800 mb-1"
-                    >
-                      Nama
-                    </label>
-                    <input
-                      id="client-name"
-                      type="text"
-                      required
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="Nama Anda"
-                      className="w-full px-4 py-2.5 rounded-xl border border-[#D0E3F8] bg-white text-slate-900 text-sm focus:outline-none focus:border-[#004CD3] focus:ring-1 focus:ring-[#004CD3] transition-colors"
-                    />
-                    <p className="text-[11px] text-slate-400 mt-1">
-                      Nama yang dapat kami sapa.
-                    </p>
-                  </div>
+                {/* Submit */}
+                <button
+                  type="submit"
+                  className="w-full flex items-center justify-center gap-2.5 bg-[#004CD3] hover:bg-[#003B86] active:bg-[#003080] text-white font-semibold py-3.5 rounded-xl transition-all duration-150 shadow-xs cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3] mt-2"
+                >
+                  {/* WhatsApp icon */}
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  Chat WhatsApp Sekarang
+                </button>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                    <div>
-                      <label
-                        htmlFor="client-email"
-                        className="block text-xs font-semibold text-slate-800 mb-1"
-                      >
-                        Email Kerja Sama
-                      </label>
-                      <input
-                        id="client-email"
-                        type="email"
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="nama@contoh.com"
-                        className="w-full px-4 py-2.5 rounded-xl border border-[#D0E3F8] bg-white text-slate-900 text-sm focus:outline-none focus:border-[#004CD3] focus:ring-1 focus:ring-[#004CD3] transition-colors"
-                      />
-                      <p className="text-[11px] text-slate-400 mt-1">
-                        Gunakan email yang aktif.
-                      </p>
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="client-whatsapp"
-                        className="block text-xs font-semibold text-slate-800 mb-1"
-                      >
-                        Nomor WhatsApp
-                      </label>
-                      <input
-                        id="client-whatsapp"
-                        type="tel"
-                        required
-                        value={whatsapp}
-                        onChange={(e) => setWhatsapp(e.target.value)}
-                        placeholder="08123456789"
-                        className="w-full px-4 py-2.5 rounded-xl border border-[#D0E3F8] bg-white text-slate-900 text-sm focus:outline-none focus:border-[#004CD3] focus:ring-1 focus:ring-[#004CD3] transition-colors"
-                      />
-                      <p className="text-[11px] text-slate-400 mt-1">
-                        Nomor aktif untuk kemudahan diskusi.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="client-org"
-                      className="block text-xs font-semibold text-slate-800 mb-1"
-                    >
-                      Nama Bisnis atau Organisasi (Opsional)
-                    </label>
-                    <input
-                      id="client-org"
-                      type="text"
-                      value={organization}
-                      onChange={(e) => setOrganization(e.target.value)}
-                      placeholder="Contoh: Kopi Nusantara / PT Maju Digital"
-                      className="w-full px-4 py-2.5 rounded-xl border border-[#D0E3F8] bg-white text-slate-900 text-sm focus:outline-none focus:border-[#004CD3] focus:ring-1 focus:ring-[#004CD3] transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="client-message"
-                      className="block text-xs font-semibold text-slate-800 mb-1"
-                    >
-                      Pesan / kebutuhan proyek
-                    </label>
-                    <textarea
-                      id="client-message"
-                      rows={3}
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Ceritakan kebutuhan web atau mobile..."
-                      className="w-full px-4 py-2.5 rounded-xl border border-[#D0E3F8] bg-white text-slate-900 text-sm focus:outline-none focus:border-[#004CD3] focus:ring-1 focus:ring-[#004CD3] transition-colors"
-                    />
-                    <p className="text-[11px] text-slate-400 mt-1">
-                      Tuliskan tujuan dan kebutuhan utama.
-                    </p>
-                  </div>
-
-                  <div className="pt-1">
-                    <label className="flex items-start gap-2.5 cursor-pointer select-none">
-                      <input
-                        type="checkbox"
-                        checked={agreeProposal}
-                        onChange={(e) => setAgreeProposal(e.target.checked)}
-                        className="mt-0.5 rounded border-slate-300 text-[#004CD3] focus:ring-[#004CD3]"
-                      />
-                      <span className="text-xs text-slate-600 leading-normal">
-                        Saya ingin mendapatkan proposal estimasi rincian teknis via WhatsApp &amp; Email.
-                      </span>
-                    </label>
-                  </div>
-
-                  <p className="text-[11px] text-slate-400 pt-1">
-                    Bagikan gambaran awal untuk memulai diskusi. Hindari data sensitif pada pesan Anda.
-                  </p>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-[#004CD3] hover:bg-[#003B86] text-white font-semibold py-3.5 rounded-xl transition-all duration-150 shadow-xs cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3]"
-                  >
-                    {submitted ? "Pesan Terkirim! Terima Kasih" : "Kirim Pesan"}
-                  </button>
-
-                  {/* Guarantee Note */}
-                  <div className="flex items-center gap-2 pt-2 text-[11.5px] text-slate-500">
-                    <svg
-                      className="w-4 h-4 text-emerald-500 shrink-0"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                      />
-                    </svg>
-                    <span>
-                      Tidak ada harga paket yang mengikat. Penawaran akan disesuaikan dengan kebutuhan dan ruang lingkup proyek Anda.
-                    </span>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </section>
-
-          {/* Bottom FAQ Section */}
-          <section aria-label="FAQ Mulai Proyek" className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-            {/* FAQ Item 1 */}
-            <div
-              onClick={() => setFaq1Open(!faq1Open)}
-              className="bg-white rounded-2xl border border-[#D0E3F8] p-5 sm:p-6 cursor-pointer hover:border-[#004CD3]/40 transition-colors shadow-xs"
-            >
-              <div className="flex items-center justify-between">
-                <h4 className="font-semibold text-slate-900 text-sm sm:text-base">
-                  Apa yang perlu disiapkan untuk memulai?
-                </h4>
-                <span className="text-[#004CD3] font-bold text-xl ml-3">
-                  {faq1Open ? "−" : "+"}
-                </span>
-              </div>
-              {faq1Open && (
-                <p className="text-slate-600 text-xs sm:text-sm mt-3 pt-3 border-t border-slate-100 leading-relaxed">
-                  Siapkan gambaran bisnis atau sekolah, tujuan produk, serta kebutuhan web atau aplikasi mobile. Gunakan formulir kontak untuk membagikan brief awal.
+                <p className="text-center text-[11px] text-slate-400 mt-1">
+                  Tanpa biaya dan tanpa komitmen — tanya-tanya dulu juga tidak masalah.
                 </p>
-              )}
-            </div>
-
-            {/* FAQ Item 2 */}
-            <div
-              onClick={() => setFaq2Open(!faq2Open)}
-              className="bg-[#F4F8FE] rounded-2xl border border-[#CBDFF5] p-5 sm:p-6 cursor-pointer hover:border-[#004CD3]/40 transition-colors shadow-xs"
-            >
-              <div className="flex items-center justify-between">
-                <h4 className="font-semibold text-slate-900 text-sm sm:text-base">
-                  Apa yang perlu disiapkan untuk memulai?
-                </h4>
-                <span className="text-[#004CD3] font-bold text-xl ml-3">
-                  {faq2Open ? "−" : "+"}
-                </span>
-              </div>
-              {faq2Open && (
-                <p className="text-slate-600 text-xs sm:text-sm mt-3 pt-3 border-t border-[#CBDFF5]/60 leading-relaxed">
-                  Siapkan gambaran bisnis atau sekolah, tujuan produk, serta kebutuhan web atau aplikasi mobile. Gunakan formulir kontak untuk membagikan brief awal.
-                </p>
-              )}
+              </form>
             </div>
           </section>
         </div>
       </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

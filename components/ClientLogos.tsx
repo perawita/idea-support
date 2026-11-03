@@ -94,6 +94,33 @@ export function SuperEpicLogo({ className = "" }: { className?: string }) {
   );
 }
 
+export function QuickTopUpLogo({ className = "" }: { className?: string }) {
+  return (
+    <div className={`inline-flex items-center gap-2 shrink-0 whitespace-nowrap py-1 ${className}`}>
+      <img
+        src="/assets/clients/quick-topup-logo.png"
+        alt="Quick TopUp"
+        className="h-8 sm:h-9 w-auto object-contain shrink-0"
+      />
+    </div>
+  );
+}
+
+export function RaevelLogo({ className = "" }: { className?: string }) {
+  return (
+    <div className={`inline-flex items-center gap-2 shrink-0 whitespace-nowrap py-1 ${className}`}>
+      <img
+        src="/assets/clients/raevel-logo.png"
+        alt="Raevel"
+        className="h-7 sm:h-8 w-auto object-contain shrink-0"
+      />
+      <span className="font-extrabold tracking-tight text-[#7C3AED] text-lg sm:text-xl font-sans shrink-0 whitespace-nowrap leading-none">
+        Raevel
+      </span>
+    </div>
+  );
+}
+
 export interface ClientLogosProps {
   speed?: string;
   className?: string;
@@ -103,66 +130,74 @@ export default function ClientLogos({
   speed = "28s",
   className = "",
 }: ClientLogosProps) {
-  // Base sequence of client logos maintaining exact original order
   const logos = [
     { id: "pertamina-1", component: <PertaminaLogo /> },
+    { id: "quick-topup-1", component: <QuickTopUpLogo /> },
     { id: "aquaman-1", component: <AquamanPoolsLogo /> },
+    { id: "raevel-1", component: <RaevelLogo /> },
     { id: "super-epic-1", component: <SuperEpicLogo /> },
-    { id: "aquaman-2", component: <AquamanPoolsLogo /> },
     { id: "pertamina-2", component: <PertaminaLogo /> },
-    { id: "aquaman-3", component: <AquamanPoolsLogo /> },
+    { id: "quick-topup-2", component: <QuickTopUpLogo /> },
+    { id: "aquaman-2", component: <AquamanPoolsLogo /> },
+    { id: "raevel-2", component: <RaevelLogo /> },
     { id: "super-epic-2", component: <SuperEpicLogo /> },
-    { id: "aquaman-4", component: <AquamanPoolsLogo /> },
   ];
 
   return (
     <section
       id="klien"
       aria-label="Logo Klien Idea.support"
-      className={`w-full py-6 sm:py-8 overflow-hidden ${className}`}
+      className={`w-full py-4 sm:py-6 overflow-hidden ${className}`}
     >
-      <div className="max-w-5xl mx-auto px-4 relative">
-        {/* Subtle gradient edge masks for smooth fade in/out */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-20 md:w-28 bg-gradient-to-r from-[#DAE5F6] via-[#DAE5F6]/80 to-transparent z-10"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-20 md:w-28 bg-gradient-to-l from-[#DAE5F6] via-[#DAE5F6]/80 to-transparent z-10"
-        />
+      <div className="flex items-center gap-0">
 
-        {/* Marquee Track Container */}
+        {/* Label DIPERCAYA OLEH */}
+        <div className="shrink-0 pl-4 sm:pl-8 lg:pl-16 pr-5 sm:pr-6 flex items-center">
+          <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.18em] text-[#0062E0] uppercase whitespace-nowrap">
+            DIPERCAYA OLEH
+          </span>
+        </div>
+
+        {/* Separator vertikal */}
+        <div className="shrink-0 w-px h-8 bg-gray-300 mr-4 sm:mr-6" aria-hidden="true" />
+
+        {/* Marquee wrapper with true alpha fade mask */}
         <div
-          className="client-logo-marquee-container relative w-full overflow-hidden py-2.5 sm:py-3"
-          style={{ "--client-logo-speed": speed } as React.CSSProperties}
+          className="flex-1 relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_32px,black_calc(100%-32px),transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_32px,black_calc(100%-32px),transparent)]"
         >
-          <div className="client-logo-marquee flex items-center opacity-90 transition-opacity hover:opacity-100">
-            {/* Track 1: Original Track (Read by Screen Readers) */}
-            <div className="flex items-center shrink-0 justify-around gap-8 sm:gap-12 md:gap-16 lg:gap-20 pr-8 sm:pr-12 md:pr-16 lg:pr-20">
-              {logos.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex items-center justify-center shrink-0 px-2 transition-transform duration-200 hover:scale-105"
-                >
-                  {item.component}
-                </div>
-              ))}
-            </div>
-
-            {/* Track 2: Duplicate Track for seamless infinite loop (Hidden from Screen Readers) */}
-            <div
-              aria-hidden="true"
-              className="flex items-center shrink-0 justify-around gap-8 sm:gap-12 md:gap-16 lg:gap-20 pr-8 sm:pr-12 md:pr-16 lg:pr-20"
-            >
-              {logos.map((item) => (
-                <div
-                  key={`dup-${item.id}`}
-                  className="flex items-center justify-center shrink-0 px-2 transition-transform duration-200 hover:scale-105"
-                >
-                  {item.component}
-                </div>
-              ))}
+          <div
+            className="client-logo-marquee-container relative w-full overflow-hidden py-2 sm:py-3"
+            style={{ "--client-logo-speed": speed } as React.CSSProperties}
+          >
+            <div className="client-logo-marquee flex items-center">
+              {/* Track 1 */}
+              <div className="flex items-center shrink-0 gap-0">
+                {logos.map((item) => (
+                  <div
+                    key={item.id}
+                    className="flex items-center shrink-0"
+                  >
+                    <div className="px-6 sm:px-8 flex items-center justify-center transition-transform duration-200 hover:scale-105">
+                      {item.component}
+                    </div>
+                    <div className="w-px h-6 bg-gray-200 shrink-0" aria-hidden="true" />
+                  </div>
+                ))}
+              </div>
+              {/* Track 2 (duplicate for seamless loop) */}
+              <div className="flex items-center shrink-0 gap-0" aria-hidden="true">
+                {logos.map((item) => (
+                  <div
+                    key={`dup-${item.id}`}
+                    className="flex items-center shrink-0"
+                  >
+                    <div className="px-6 sm:px-8 flex items-center justify-center transition-transform duration-200 hover:scale-105">
+                      {item.component}
+                    </div>
+                    <div className="w-px h-6 bg-gray-200 shrink-0" aria-hidden="true" />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
