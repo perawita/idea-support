@@ -42,14 +42,14 @@ const categoryPlansData: CategoryPlans = {
   "landing-page": {
     starter: {
       categorySubtitle: "LANDING PAGE",
-      title: "Starter",
+      title: "Lite",
       durationBadge: "Hingga 3 section • 3-5 hari kerja",
       originalPrice: "Rp 1.490.000",
       discountBadge: "Hemat 25%",
       price: "Rp 1.100.000",
       priceNote: "Gratis domain (.com) & hosting tahun pertama",
       description: "Cocok untuk validasi ide, UMKM pemula, dan promosi 1 produk terstruktur.",
-      ctaText: "Pilih Paket Starter",
+      ctaText: "Pilih Paket Lite",
       ctaLink: "/kontak",
       featuresTitle: "SPESIFIKASI PAKET:",
       features: [
@@ -68,17 +68,17 @@ const categoryPlansData: CategoryPlans = {
     },
     growth: {
       categorySubtitle: "LANDING PAGE",
-      title: "Growth",
+      title: "Pro",
       durationBadge: "Hingga 6 section • 4-7 hari kerja",
       originalPrice: "Rp 2.490.000",
       discountBadge: "Hemat 20%",
       price: "Rp 1.990.000",
       priceNote: "Gratis domain (.com) & hosting premium 1 tahun",
       description: "Dirancang khusus untuk kampanye iklan Google/Meta Ads berkonversi tinggi.",
-      ctaText: "Mulai dengan Growth",
+      ctaText: "Mulai dengan Pro",
       ctaLink: "/kontak",
       isPopular: true,
-      featuresTitle: "SEMUA FITUR STARTER, DITAMBAH:",
+      featuresTitle: "SEMUA FITUR LITE, DITAMBAH:",
       features: [
         { text: "Hingga 6 section berorientasi konversi penjualan", included: true },
         { text: "Integrasi Facebook Pixel, Google Analytics 4 & TikTok API", included: true },
@@ -93,16 +93,16 @@ const categoryPlansData: CategoryPlans = {
     },
     scale: {
       categorySubtitle: "LANDING PAGE",
-      title: "Scale",
+      title: "Elite",
       durationBadge: "Hingga 10 section • 7-10 hari kerja",
       originalPrice: "Rp 3.800.000",
       discountBadge: "Hemat 22%",
       price: "Rp 2.950.000",
       priceNote: "Gratis domain (.com) & cloud hosting performa tinggi",
       description: "Solusi landing page komprehensif untuk produk bernilai tinggi & integrasi CRM.",
-      ctaText: "Konsultasi Scale",
+      ctaText: "Konsultasi Elite",
       ctaLink: "/kontak",
-      featuresTitle: "SEMUA FITUR GROWTH, DITAMBAH:",
+      featuresTitle: "SEMUA FITUR PRO, DITAMBAH:",
       features: [
         { text: "Multi-CTA + Halaman Thank You konversi terpisah", included: true },
         { text: "Integrasi Webhook CRM (HubSpot, Notion, Zapier)", included: true },
@@ -118,14 +118,14 @@ const categoryPlansData: CategoryPlans = {
   "company-profile": {
     starter: {
       categorySubtitle: "COMPANY PROFILE",
-      title: "Starter",
+      title: "Lite",
       durationBadge: "Hingga 5 halaman · 4-7 hari kerja",
       originalPrice: "Rp 2.800.000",
       discountBadge: "Hemat 25%",
       price: "Rp 2.100.000",
       priceNote: "Gratis domain (.com) & hosting tahun pertama",
       description: "Cocok untuk bisnis kecil & UMKM yang ingin hadir secara profesional di dunia digital.",
-      ctaText: "Pilih Paket Starter",
+      ctaText: "Pilih Paket Lite",
       ctaLink: "/kontak",
       featuresTitle: "FITUR UTAMA PAKET:",
       features: [
@@ -147,19 +147,19 @@ const categoryPlansData: CategoryPlans = {
     },
     growth: {
       categorySubtitle: "COMPANY PROFILE",
-      title: "Growth",
+      title: "Pro",
       durationBadge: "Hingga 8 halaman · 7-14 hari kerja",
       originalPrice: "Rp 3.900.000",
       discountBadge: "Hemat 25%",
       price: "Rp 2.900.000",
       priceNote: "Gratis domain (.com) & hosting tahun pertama",
       description: "Untuk bisnis yang ingin kelola konten sendiri — panel admin, training, dan marketing digital terintegrasi.",
-      ctaText: "Mulai dengan Growth",
+      ctaText: "Mulai dengan Pro",
       ctaLink: "/kontak",
       isPopular: true,
-      featuresTitle: "SEMUA FITUR STARTER, DITAMBAH:",
+      featuresTitle: "SEMUA FITUR LITE, DITAMBAH:",
       features: [
-        { text: "Semua fitur Paket Starter", included: true },
+        { text: "Semua fitur Paket Lite", included: true },
         { text: "Blog / artikel dinamis (panel admin)", included: true },
         { text: "Galeri portfolio dinamis", included: true },
         { text: "Training panel admin (1 sesi online)", included: true },
@@ -177,18 +177,18 @@ const categoryPlansData: CategoryPlans = {
     },
     scale: {
       categorySubtitle: "COMPANY PROFILE",
-      title: "Scale",
+      title: "Elite",
       durationBadge: "Hingga 12 halaman · 7-14 hari kerja",
       originalPrice: "Rp 5.500.000",
       discountBadge: "Hemat 24%",
       price: "Rp 4.200.000",
       priceNote: "Gratis domain (.com) & hosting tahun pertama",
       description: "Solusi lengkap untuk perusahaan besar yang membutuhkan website premium & performa tinggi.",
-      ctaText: "Konsultasi Scale",
+      ctaText: "Konsultasi Elite",
       ctaLink: "/kontak",
-      featuresTitle: "SEMUA FITUR GROWTH, DITAMBAH:",
+      featuresTitle: "SEMUA FITUR PRO, DITAMBAH:",
       features: [
-        { text: "Semua fitur Paket Growth", included: true },
+        { text: "Semua fitur Paket Pro", included: true },
         { text: "Google Ads pixel & conversion tracking", included: true },
         { text: "Gratis jasa setup 1 campaign Google Ads", included: true },
         { text: "Multi-bahasa (ID & EN)", included: true },
@@ -204,7 +204,7 @@ const categoryPlansData: CategoryPlans = {
   "web-saas": {
     starter: {
       categorySubtitle: "WEB APP / SAAS",
-      title: "MVP Starter",
+      title: "MVP Lite",
       durationBadge: "3-5 fitur inti • 2-3 minggu",
       originalPrice: "Rp 5.000.000",
       discountBadge: "Hemat 20%",
@@ -228,17 +228,17 @@ const categoryPlansData: CategoryPlans = {
     },
     growth: {
       categorySubtitle: "WEB APP / SAAS",
-      title: "Scale Platform",
+      title: "Pro Platform",
       durationBadge: "Sistem Lengkap • 3-5 minggu",
       originalPrice: "Rp 8.500.000",
       discountBadge: "Hemat 24%",
       price: "Rp 6.500.000",
       priceNote: "Arsitektur cloud skalabel siap ribuan pengguna",
       description: "Sistem aplikasi web interaktif dengan integrasi pembayaran otomatis, email transactional, & analytics.",
-      ctaText: "Bangun Scale App",
+      ctaText: "Bangun Pro Platform",
       ctaLink: "/kontak",
       isPopular: true,
-      featuresTitle: "SEMUA FITUR STARTER, DITAMBAH:",
+      featuresTitle: "SEMUA FITUR LITE, DITAMBAH:",
       features: [
         { text: "Integrasi Payment Gateway (Midtrans / Xendit / QRIS)", included: true },
         { text: "Email notifikasi transaksional otomatis (Resend)", included: true },
@@ -252,7 +252,7 @@ const categoryPlansData: CategoryPlans = {
     },
     scale: {
       categorySubtitle: "WEB APP / SAAS",
-      title: "Custom Enterprise",
+      title: "Custom Elite",
       durationBadge: "Sesuai Scope • Timeline Fleksibel",
       originalPrice: "Rp 15.000.000",
       discountBadge: "Hemat 20%",
@@ -261,7 +261,7 @@ const categoryPlansData: CategoryPlans = {
       description: "Untuk perusahaan yang memerlukan sistem enterprise kompleks, multi-tenant, dan kepatuhan data ketat.",
       ctaText: "Diskusi Arsitektur",
       ctaLink: "/kontak",
-      featuresTitle: "SEMUA FITUR GROWTH, DITAMBAH:",
+      featuresTitle: "SEMUA FITUR PRO, DITAMBAH:",
       features: [
         { text: "Arsitektur Multi-tenant SaaS", included: true },
         { text: "Microservices & integrasi ERP eksternal", included: true },
@@ -276,14 +276,14 @@ const categoryPlansData: CategoryPlans = {
   "mobile-app": {
     starter: {
       categorySubtitle: "APLIKASI MOBILE",
-      title: "Mobile MVP",
+      title: "Mobile Lite",
       durationBadge: "Android APK • 2-3 minggu",
       originalPrice: "Rp 4.500.000",
       discountBadge: "Hemat 22%",
       price: "Rp 3.500.000",
       priceNote: "Termasuk source code & bantuan rilis APK",
       description: "Aplikasi mobile fungsional untuk prototipe bisnis atau penggunaan operasional internal.",
-      ctaText: "Mulai Mobile MVP",
+      ctaText: "Mulai Mobile Lite",
       ctaLink: "/kontak",
       featuresTitle: "FITUR PAKET MOBILE:",
       features: [
@@ -300,17 +300,17 @@ const categoryPlansData: CategoryPlans = {
     },
     growth: {
       categorySubtitle: "APLIKASI MOBILE",
-      title: "Play Store Ready",
+      title: "Play Store Pro",
       durationBadge: "Android & iOS • 3-5 minggu",
       originalPrice: "Rp 7.800.000",
       discountBadge: "Hemat 24%",
       price: "Rp 5.900.000",
       priceNote: "Bantuan publikasi hingga live di store",
       description: "Aplikasi mobile lengkap siap dipublikasikan ke Google Play Store dan App Store iOS.",
-      ctaText: "Pilih Play Store Ready",
+      ctaText: "Pilih Play Store Pro",
       ctaLink: "/kontak",
       isPopular: true,
-      featuresTitle: "SEMUA FITUR STARTER, DITAMBAH:",
+      featuresTitle: "SEMUA FITUR LITE, DITAMBAH:",
       features: [
         { text: "Bantuan setup & publikasi ke Google Play Store", included: true },
         { text: "Integrasi Push Notification Cloud (FCM)", included: true },
@@ -324,16 +324,16 @@ const categoryPlansData: CategoryPlans = {
     },
     scale: {
       categorySubtitle: "APLIKASI MOBILE",
-      title: "Full Ecosystem",
+      title: "Elite Ecosystem",
       durationBadge: "App + Backend + Web • 6+ minggu",
       originalPrice: "Rp 14.000.000",
       discountBadge: "Hemat 25%",
       price: "Rp 10.500.000",
       priceNote: "Paket lengkap Mobile App + Web Admin Dashboard",
       description: "Ekosistem digital lengkap: aplikasi mobile untuk pelanggan, dashboard admin web untuk operasional.",
-      ctaText: "Konsultasi Ekosistem",
+      ctaText: "Konsultasi Ekosistem Elite",
       ctaLink: "/kontak",
-      featuresTitle: "SEMUA FITUR GROWTH, DITAMBAH:",
+      featuresTitle: "SEMUA FITUR PRO, DITAMBAH:",
       features: [
         { text: "Aplikasi Customer (Android & iOS)", included: true },
         { text: "Aplikasi Driver / Merchant / Staff khusus", included: true },
@@ -381,7 +381,7 @@ const categoryPlansData: CategoryPlans = {
       ctaText: "Pilih Automated Booking",
       ctaLink: "/kontak",
       isPopular: true,
-      featuresTitle: "SEMUA FITUR STARTER, DITAMBAH:",
+      featuresTitle: "SEMUA FITUR LITE, DITAMBAH:",
       features: [
         { text: "Pembayaran DP / Lunas otomatis via QRIS & Transfer", included: true },
         { text: "Sinkronisasi otomatis dengan Google Calendar staf", included: true },
@@ -403,7 +403,7 @@ const categoryPlansData: CategoryPlans = {
       description: "Pengelolaan booking terpusat untuk berbagai lokasi cabang, divisi, dan ratusan staf.",
       ctaText: "Konsultasi Multi-Cabang",
       ctaLink: "/kontak",
-      featuresTitle: "SEMUA FITUR GROWTH, DITAMBAH:",
+      featuresTitle: "SEMUA FITUR PRO, DITAMBAH:",
       features: [
         { text: "Dukungan multi-lokasi / cabang cabang", included: true },
         { text: "Dashboard kontrol terpusat untuk Owner & Manajer Cabang", included: true },
@@ -418,14 +418,14 @@ const categoryPlansData: CategoryPlans = {
   "ecommerce": {
     starter: {
       categorySubtitle: "E-COMMERCE",
-      title: "Toko Online Starter",
+      title: "Toko Online Lite",
       durationBadge: "Hingga 30 produk • 5-8 hari kerja",
       originalPrice: "Rp 2.900.000",
       discountBadge: "Hemat 21%",
       price: "Rp 2.290.000",
       priceNote: "Gratis domain (.com) & hosting toko online",
       description: "Katalog produk rapi dengan checkout langsung mengarah ke chat WhatsApp penjual.",
-      ctaText: "Pilih Toko Starter",
+      ctaText: "Pilih Toko Lite",
       ctaLink: "/kontak",
       featuresTitle: "FITUR TOKO ONLINE:",
       features: [
@@ -451,7 +451,7 @@ const categoryPlansData: CategoryPlans = {
       ctaText: "Mulai Toko Otomatis",
       ctaLink: "/kontak",
       isPopular: true,
-      featuresTitle: "SEMUA FITUR STARTER, DITAMBAH:",
+      featuresTitle: "SEMUA FITUR LITE, DITAMBAH:",
       features: [
         { text: "Kalkulator ongkos kirim real-time (JNE, SiCepat, J&T, dll)", included: true },
         { text: "Payment Gateway otomatis (QRIS, VA Bank, E-Wallet)", included: true },
@@ -474,7 +474,7 @@ const categoryPlansData: CategoryPlans = {
       description: "Toko online performa tinggi untuk brand DTC, integrasi inventori gudang, dan sistem membership poin.",
       ctaText: "Konsultasi Flagship Store",
       ctaLink: "/kontak",
-      featuresTitle: "SEMUA FITUR GROWTH, DITAMBAH:",
+      featuresTitle: "SEMUA FITUR PRO, DITAMBAH:",
       features: [
         { text: "Sistem Membership, Poin Reward, & Tier Pelanggan", included: true },
         { text: "Integrasi Manajemen Stok Multi-Warehouse / Gudang", included: true },
@@ -889,7 +889,7 @@ export default function LayananPage() {
             {/* 3. Three Pricing Cards (Dinamis Sesuai Kategori yang Dipilih) */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
               
-              {/* CARD 1: STARTER */}
+              {/* CARD 1: LITE */}
               {(() => {
                 const plan = activeCategoryPlans.starter;
                 return (
@@ -963,7 +963,7 @@ export default function LayananPage() {
                 );
               })()}
 
-              {/* CARD 2: GROWTH (HIGHLIGHTED / POPULAR) */}
+              {/* CARD 2: PRO (HIGHLIGHTED / POPULAR) */}
               {(() => {
                 const plan = activeCategoryPlans.growth;
                 return (
@@ -1049,7 +1049,7 @@ export default function LayananPage() {
                 );
               })()}
 
-              {/* CARD 3: SCALE & ENTERPRISE */}
+              {/* CARD 3: ELITE */}
               {(() => {
                 const plan = activeCategoryPlans.scale;
                 return (
