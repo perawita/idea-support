@@ -124,6 +124,23 @@ const portfolioData: PortfolioItem[] = [
     techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
   },
   {
+    id: "porto-desa-karombo",
+    category: "Web App / SaaS",
+    categoryLabel: "Web App / SaaS",
+    title: "Website Desa Karombo — Sistem Layanan Surat",
+    description:
+      "Platform digital pelayanan administrasi surat dan portal Desa Karombo. Memudahkan warga mengajukan permohonan surat keterangan secara online dengan dashboard verifikasi admin otomatis.",
+    extraInfo: "Web App / Portal",
+    image: "/assets/portfolio/desa-karombo.jpg",
+    features: [
+      "Pengajuan surat keterangan online cepat & praktis untuk warga",
+      "Dashboard admin desa untuk verifikasi dan arsip dokumen terpusat",
+      "Format surat resmi otomatis siap cetak dengan penomoran rapi",
+      "Pelacakan status permohonan surat warga secara transparan",
+    ],
+    techStack: ["Laravel", "Blade", "Tailwind CSS", "MySQL"],
+  },
+  {
     id: "porto-saas-1",
     category: "Web App / SaaS",
     categoryLabel: "Web App / SaaS",
