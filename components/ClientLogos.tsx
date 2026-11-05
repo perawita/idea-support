@@ -94,6 +94,26 @@ export function SuperEpicLogo({ className = "" }: { className?: string }) {
   );
 }
 
+export function DompuLogo({ className = "" }: { className?: string }) {
+  return (
+    <div className={`inline-flex items-center gap-2 sm:gap-2.5 shrink-0 whitespace-nowrap py-1 ${className}`}>
+      <img
+        src="/assets/clients/dompu-logo.png"
+        alt="Pemerintah Kabupaten Dompu"
+        className="h-8 sm:h-9 w-auto object-contain shrink-0"
+      />
+      <div className="flex flex-col text-left leading-tight shrink-0 whitespace-nowrap">
+        <span className="font-bold text-[9px] sm:text-[10px] tracking-wider text-slate-500 uppercase font-sans">
+          PEMKAB
+        </span>
+        <span className="font-extrabold tracking-tight text-[#1E3A8A] text-base sm:text-lg font-sans leading-none">
+          DOMPU
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export function QuickTopUpLogo({ className = "" }: { className?: string }) {
   return (
     <div className={`inline-flex items-center gap-2 shrink-0 whitespace-nowrap py-1 ${className}`}>
@@ -132,11 +152,13 @@ export default function ClientLogos({
 }: ClientLogosProps) {
   const logos = [
     { id: "pertamina-1", component: <PertaminaLogo /> },
+    { id: "dompu-1", component: <DompuLogo /> },
     { id: "quick-topup-1", component: <QuickTopUpLogo /> },
     { id: "aquaman-1", component: <AquamanPoolsLogo /> },
     { id: "raevel-1", component: <RaevelLogo /> },
     { id: "super-epic-1", component: <SuperEpicLogo /> },
     { id: "pertamina-2", component: <PertaminaLogo /> },
+    { id: "dompu-2", component: <DompuLogo /> },
     { id: "quick-topup-2", component: <QuickTopUpLogo /> },
     { id: "aquaman-2", component: <AquamanPoolsLogo /> },
     { id: "raevel-2", component: <RaevelLogo /> },
