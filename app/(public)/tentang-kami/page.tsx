@@ -172,7 +172,7 @@ export default function TentangKamiPage() {
                       key={idx}
                       src={member.image}
                       alt={member.name}
-                      className="inline-block h-8 w-8 sm:h-9 sm:w-9 rounded-full ring-2 ring-white object-cover object-top shadow-2xs"
+                      className="inline-block h-8 w-8 sm:h-9 sm:w-9 rounded-full ring-2 ring-white object-cover object-top shadow-2xs grayscale contrast-105"
                     />
                   ) : (
                     <div
@@ -317,7 +317,7 @@ export default function TentangKamiPage() {
                         <img
                           src={member.image}
                           alt={member.name}
-                          className="w-full h-full object-cover object-top drop-shadow-2xl group-hover:scale-105 transition-transform duration-300 pointer-events-none"
+                          className="w-full h-full object-cover object-top drop-shadow-2xl grayscale contrast-105 group-hover:scale-105 transition-transform duration-300 pointer-events-none"
                         />
                       ) : (
                         <div className="w-full h-full flex flex-col items-center justify-end pb-8 sm:pb-10">

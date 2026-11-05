@@ -106,7 +106,7 @@ export default function TimPage() {
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-24 h-24 rounded-full object-cover object-top border-2 border-[#CBDFF5] shadow-sm mb-3"
+                      className="w-24 h-24 rounded-full object-cover object-top border-2 border-[#CBDFF5] shadow-sm mb-3 grayscale contrast-105"
                     />
                   ) : (
                     <>
