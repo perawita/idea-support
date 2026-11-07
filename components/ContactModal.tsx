@@ -72,12 +72,12 @@ export default function ContactModal({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-lg bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-[#D0E3F8] relative max-h-[90vh] overflow-y-auto"
+        className="w-full max-w-lg bg-white dark:bg-[#0F172A] rounded-3xl p-6 sm:p-8 shadow-2xl border border-[#D0E3F8] dark:border-slate-800 relative max-h-[90vh] overflow-y-auto"
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-2 rounded-full hover:bg-slate-100 transition-colors cursor-pointer"
+          className="absolute top-5 right-5 text-slate-400 dark:text-slate-400 hover:text-slate-700 dark:hover:text-white p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
           aria-label="Tutup modal"
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -88,15 +88,15 @@ export default function ContactModal({
         {/* Top Eyebrow Badge */}
         <div className="flex items-center gap-2 mb-3">
           <IdeaSupportLogo variant="primary" size="sm" showText={false} />
-          <span className="text-[11px] font-bold text-[#004CD3] bg-[#EDF5FE] px-3 py-1 rounded-full border border-[#D0E3F8] uppercase tracking-wider">
+          <span className="text-[11px] font-bold text-[#004CD3] dark:text-[#38BDF8] bg-[#EDF5FE] dark:bg-blue-950/70 px-3 py-1 rounded-full border border-[#D0E3F8] dark:border-blue-500/30 uppercase tracking-wider">
             {category}
           </span>
         </div>
 
-        <h3 id="contact-modal-title" className="text-2xl font-bold text-slate-900 mb-2">
+        <h3 id="contact-modal-title" className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
           {modalHeading}
         </h3>
-        <p className="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed">
+        <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm mb-6 leading-relaxed">
           Diskusikan kebutuhan website atau aplikasi Anda bersama tim IDEA.support. Kami siap memberikan saran teknis, estimasi waktu, dan solusi terbaik tanpa biaya.
         </p>
 
@@ -115,7 +115,7 @@ export default function ContactModal({
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                 Nama Lengkap / Perusahaan <span className="text-red-500">*</span>
               </label>
               <input
@@ -124,12 +124,12 @@ export default function ContactModal({
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Contoh: Ryan Putrawan (PT Maju Bersama)"
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:border-[#004CD3] focus:ring-2 focus:ring-[#004CD3]/20 outline-none transition-all"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:border-[#004CD3] focus:ring-2 focus:ring-[#004CD3]/20 outline-none transition-all dark:bg-slate-800/90 dark:text-white"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                 WhatsApp / Email Aktif <span className="text-red-500">*</span>
               </label>
               <input
@@ -138,18 +138,18 @@ export default function ContactModal({
                 value={emailOrPhone}
                 onChange={(e) => setEmailOrPhone(e.target.value)}
                 placeholder="0812-xxxx-xxxx atau nama@email.com"
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:border-[#004CD3] focus:ring-2 focus:ring-[#004CD3]/20 outline-none transition-all"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:border-[#004CD3] focus:ring-2 focus:ring-[#004CD3]/20 outline-none transition-all dark:bg-slate-800/90 dark:text-white"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                 Layanan yang Diminati
               </label>
               <select
                 value={serviceType}
                 onChange={(e) => setServiceType(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:border-[#004CD3] focus:ring-2 focus:ring-[#004CD3]/20 outline-none transition-all bg-white"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:border-[#004CD3] focus:ring-2 focus:ring-[#004CD3]/20 outline-none transition-all bg-white dark:bg-slate-800/90 dark:text-white"
               >
                 <option value="Website Landing Page">Website Landing Page</option>
                 <option value="Website Company Profile">Website Company Profile</option>
@@ -162,7 +162,7 @@ export default function ContactModal({
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                 Ceritakan Kebutuhan Proyek Anda
               </label>
               <textarea
@@ -170,7 +170,7 @@ export default function ContactModal({
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
                 placeholder="Misal: Saya ingin membuat website booking lapangan futsal dengan sistem pembayaran otomatis..."
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:border-[#004CD3] focus:ring-2 focus:ring-[#004CD3]/20 outline-none resize-none transition-all"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:border-[#004CD3] focus:ring-2 focus:ring-[#004CD3]/20 outline-none resize-none transition-all dark:bg-slate-800/90 dark:text-white"
               />
             </div>
 

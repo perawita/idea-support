@@ -31,16 +31,27 @@ export default function RootLayout({
     <html
       lang="id"
       data-scroll-behavior="smooth"
+      suppressHydrationWarning
       className={`${poppins.variable} h-full antialiased font-sans`}
     >
-      <body
-        className="min-h-screen flex flex-col text-[#1e293b] font-sans"
-        style={{
-          backgroundColor: '#DAE5F6',
-          backgroundImage: 'linear-gradient(rgba(100,140,210,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(100,140,210,0.06) 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
-        }}
-      >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const stored = localStorage.getItem('idea-theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (stored === 'dark' || (!stored && prefersDark)) {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
+      </head>
+      <body className="min-h-screen flex flex-col font-sans transition-colors duration-300 idea-blueprint-body">
         {children}
       </body>
     </html>

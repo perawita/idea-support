@@ -38,10 +38,10 @@ export default function IdeaSupportLogo({
   const circleBg = isWhite
     ? "bg-[#003B86]"
     : isPrimary
-    ? "bg-[#D0E3F8]"
-    : "bg-[#E0E0E0]";
+    ? "bg-[#D0E3F8] dark:bg-blue-950 dark:border dark:border-blue-500/30"
+    : "bg-[#E0E0E0] dark:bg-slate-800";
 
-  const maskColor = isPrimary ? "#004CD3" : "#171717";
+  const maskColor = isPrimary ? "var(--logo-mask, #004CD3)" : "#171717";
 
   return (
     <div className={`inline-flex items-center gap-2.5 sm:gap-3 select-none ${className}`}>
