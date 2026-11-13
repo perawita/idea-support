@@ -141,10 +141,10 @@ const portfolioData: PortfolioItem[] = [
     techStack: ["Laravel", "Blade", "Tailwind CSS", "MySQL"],
   },
   {
-    id: "porto-asklawyer-legal",
+    id: "porto-lawyer-legal",
     category: "Web App / SaaS",
     categoryLabel: "Web App / SaaS",
-    title: "AskLawyer — Platform Konsultasi Hukum Digital & Manajemen Kasus",
+    title: "Lawyer — Platform Konsultasi Hukum Digital & Manajemen Kasus",
     description:
       "Platform solusi hukum digital terintegrasi untuk menghubungkan klien dengan pengacara terverifikasi. Dilengkapi brankas dokumen terenkripsi, manajemen kasus hukum, dan kanal konsultasi interaktif aman.",
     extraInfo: "Web App / LegalTech",
