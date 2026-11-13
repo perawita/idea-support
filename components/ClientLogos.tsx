@@ -36,7 +36,7 @@ export function QuickTopUpLogo({ className = "" }: { className?: string }) {
   return (
     <div className={`inline-flex items-center gap-2 shrink-0 whitespace-nowrap py-1 ${className}`}>
       <img
-        src="/assets/clients/quick-topup-logo.png"
+        src="/assets/clients/quick-topup-transparent.png"
         alt="Quick TopUp"
         className="h-8 sm:h-9 w-auto object-contain shrink-0"
       />
