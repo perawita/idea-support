@@ -196,3 +196,4 @@ export interface Translations {
     privacyPolicy: string;
   };
 }
+

@@ -846,3 +846,4 @@ export const idTranslations: Translations = {
     privacyPolicy: "Kebijakan Privasi",
   },
 };
+

@@ -846,3 +846,4 @@ export const enTranslations: Translations = {
     privacyPolicy: "Privacy Policy",
   },
 };
+
