@@ -3,21 +3,23 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import PageHeader from "@/components/PageHeader";
-import { PertaminaLogo, AquamanPoolsLogo, SuperEpicLogo, QuickTopUpLogo, RaevelLogo } from "@/components/ClientLogos";
+import { DompuLogo, LawyerLogo, QuickTopUpLogo, RaevelLogo } from "@/components/ClientLogos";
 import Footer from "@/components/Footer";
 
 export default function KlienKamiPage() {
   const logos = [
-    { id: "pertamina-1", component: <PertaminaLogo /> },
+    { id: "dompu-1", component: <DompuLogo /> },
+    { id: "lawyer-1", component: <LawyerLogo /> },
     { id: "quick-topup-1", component: <QuickTopUpLogo /> },
-    { id: "aquaman-1", component: <AquamanPoolsLogo /> },
     { id: "raevel-1", component: <RaevelLogo /> },
-    { id: "super-epic-1", component: <SuperEpicLogo /> },
-    { id: "pertamina-2", component: <PertaminaLogo /> },
+    { id: "dompu-2", component: <DompuLogo /> },
+    { id: "lawyer-2", component: <LawyerLogo /> },
     { id: "quick-topup-2", component: <QuickTopUpLogo /> },
-    { id: "aquaman-2", component: <AquamanPoolsLogo /> },
     { id: "raevel-2", component: <RaevelLogo /> },
-    { id: "super-epic-2", component: <SuperEpicLogo /> },
+    { id: "dompu-3", component: <DompuLogo /> },
+    { id: "lawyer-3", component: <LawyerLogo /> },
+    { id: "quick-topup-3", component: <QuickTopUpLogo /> },
+    { id: "raevel-3", component: <RaevelLogo /> },
   ];
 
   return (
