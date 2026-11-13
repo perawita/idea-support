@@ -141,6 +141,23 @@ const portfolioData: PortfolioItem[] = [
     techStack: ["Laravel", "Blade", "Tailwind CSS", "MySQL"],
   },
   {
+    id: "porto-asklawyer-legal",
+    category: "Web App / SaaS",
+    categoryLabel: "Web App / SaaS",
+    title: "AskLawyer — Platform Konsultasi Hukum Digital & Manajemen Kasus",
+    description:
+      "Platform solusi hukum digital terintegrasi untuk menghubungkan klien dengan pengacara terverifikasi. Dilengkapi brankas dokumen terenkripsi, manajemen kasus hukum, dan kanal konsultasi interaktif aman.",
+    extraInfo: "Web App / LegalTech",
+    image: "/assets/portfolio/lawyer-platform.jpg",
+    features: [
+      "Konsultasi hukum digital dengan pengacara terverifikasi (Verified Lawyers)",
+      "Brankas dokumen hukum terenkripsi & penyimpanan cloud fleksibel",
+      "Manajemen kasus (Case Management) & penanganan aduan praktis",
+      "Pembayaran aman terintegrasi (Secure Payments) & notifikasi real-time",
+    ],
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "PostgreSQL"],
+  },
+  {
     id: "porto-saas-1",
     category: "Web App / SaaS",
     categoryLabel: "Web App / SaaS",

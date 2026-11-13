@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import IdeaSupportLogo from "./IdeaSupportLogo";
 import ContactModal from "./ContactModal";
-import ThemeToggle from "./ThemeToggle";
 
 export interface NavbarProps {
   activePage?: "Beranda" | "Layanan" | "Portofolio" | "Klien Kami" | "Tentang Kami" | "Tim" | "Kontak";
@@ -47,7 +46,7 @@ export default function Navbar({ activePage }: NavbarProps) {
     <header className="w-full pt-4 md:pt-6 px-4 sm:px-6 min-[1340px]:px-0 max-w-[1298px] mx-auto relative z-50">
       <nav
         aria-label="Navigasi Utama"
-        className="w-full h-[64px] sm:h-[72px] bg-white/95 dark:bg-[#0F172A]/90 rounded-full px-4 sm:px-6 flex items-center justify-between shadow-sm dark:shadow-slate-950/40 border border-gray-100 dark:border-slate-800 transition-all duration-300 backdrop-blur-md"
+        className="w-full h-[64px] sm:h-[72px] bg-white rounded-full px-4 sm:px-6 flex items-center justify-between shadow-sm border border-gray-100 transition-all duration-200"
       >
         {/* Brand Logo */}
         <Link
@@ -69,7 +68,7 @@ export default function Navbar({ activePage }: NavbarProps) {
                 className={`text-[15px] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3]/60 rounded-full px-4 py-2 ${
                   isActive
                     ? "bg-[#004CD3] text-white font-semibold shadow-xs"
-                    : "text-gray-600 dark:text-slate-300 hover:text-[#004CD3] dark:hover:text-[#38BDF8] hover:bg-blue-50/60 dark:hover:bg-slate-800/60 font-medium"
+                    : "text-gray-600 hover:text-[#004CD3] hover:bg-blue-50/60 font-medium"
                 }`}
               >
                 {item.label}
@@ -78,8 +77,8 @@ export default function Navbar({ activePage }: NavbarProps) {
           })}
         </div>
 
-        {/* CTA Button + Theme Toggle + Mobile Menu */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        {/* CTA Button + Mobile Menu */}
+        <div className="flex items-center gap-3">
           {/* Hubungi Kami - Desktop */}
           <button
             type="button"
@@ -89,14 +88,11 @@ export default function Navbar({ activePage }: NavbarProps) {
             Hubungi Kami
           </button>
 
-          {/* Theme Toggle Button (Light / Dark) */}
-          <ThemeToggle />
-
           {/* Mobile / Tablet Menu Button */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex lg:hidden text-gray-700 dark:text-slate-300 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3]"
+            className="flex lg:hidden text-gray-700 p-2 rounded-full hover:bg-gray-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3]"
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
             aria-label={mobileMenuOpen ? "Tutup menu" : "Buka menu navigasi"}
@@ -132,7 +128,7 @@ export default function Navbar({ activePage }: NavbarProps) {
       {mobileMenuOpen && (
         <div
           id="mobile-menu"
-          className="lg:hidden absolute top-full left-4 right-4 mt-3 bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-md rounded-2xl p-4 shadow-xl border border-gray-100 dark:border-slate-800 transition-all duration-200 ease-out"
+          className="lg:hidden absolute top-full left-4 right-4 mt-3 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 transition-all duration-200 ease-out"
         >
           <ul className="flex flex-col gap-1">
             {navItems.map((item) => {
@@ -145,7 +141,7 @@ export default function Navbar({ activePage }: NavbarProps) {
                     className={`block px-4 py-2.5 rounded-xl font-medium text-base transition-colors ${
                       isActive
                         ? "bg-[#004CD3] text-white font-semibold shadow-xs"
-                        : "text-gray-600 dark:text-slate-300 hover:bg-blue-50/60 dark:hover:bg-slate-800/60 hover:text-[#004CD3] dark:hover:text-[#38BDF8]"
+                        : "text-gray-600 hover:bg-blue-50/60 hover:text-[#004CD3]"
                     }`}
                   >
                     {item.label}
@@ -153,7 +149,7 @@ export default function Navbar({ activePage }: NavbarProps) {
                 </li>
               );
             })}
-            <li className="pt-2 border-t border-gray-100 dark:border-slate-800 mt-1">
+            <li className="pt-2 border-t border-gray-100 mt-1">
               <button
                 type="button"
                 onClick={() => {
