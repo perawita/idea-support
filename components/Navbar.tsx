@@ -91,7 +91,7 @@ export default function Navbar({ activePage }: NavbarProps) {
             <button
               type="button"
               onClick={() => setContactModalOpen(true)}
-              className="hidden lg:inline-flex items-center justify-center px-5 sm:px-6 h-[48px] sm:h-[50px] bg-[#004CD3] hover:bg-[#003BAA] text-white text-[15px] font-semibold rounded-full transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3]/60 shadow-sm cursor-pointer whitespace-nowrap"
+              className="hidden lg:inline-flex items-center px-5 py-2.5 bg-[#004CD3] hover:bg-[#003BAA] text-white text-[15px] font-semibold rounded-full transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3]/60 shadow-sm cursor-pointer whitespace-nowrap"
             >
               {dict.nav.contactUs}
             </button>

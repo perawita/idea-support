@@ -18,9 +18,9 @@ export default function LanguageSwitcher({ className = "" }: LanguageSwitcherPro
     <div
       role="group"
       aria-label="Language Selector"
-      className={`inline-flex items-center justify-center bg-white rounded-full border border-gray-100 shadow-sm hover:border-[#004CD3]/40 hover:shadow-md transition-all duration-200 px-2.5 sm:px-3 h-[64px] sm:h-[72px] shrink-0 select-none ${className}`}
+      className={`inline-flex items-center justify-center bg-white rounded-full border border-gray-100 shadow-sm px-3.5 sm:px-4 h-[64px] sm:h-[72px] shrink-0 select-none transition-all duration-200 ${className}`}
     >
-      {/* Single Toggle Button with identical height, color, and presence as Navbar Contact Us button */}
+      {/* Single Toggle Button styled exactly like the original Navbar Contact Us button */}
       <button
         type="button"
         onClick={handleToggle}
@@ -34,11 +34,11 @@ export default function LanguageSwitcher({ className = "" }: LanguageSwitcherPro
             ? "Beralih ke English (EN)"
             : "Switch to Bahasa Indonesia (ID)"
         }
-        className="h-[48px] sm:h-[50px] w-[90px] sm:w-[110px] rounded-full bg-[#004CD3] hover:bg-[#003BAA] active:scale-95 text-white font-bold text-[15px] sm:text-base tracking-wider shadow-sm hover:shadow-md flex items-center justify-center transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3] focus-visible:ring-offset-2"
+        className="inline-flex items-center justify-center px-5 py-2.5 bg-[#004CD3] hover:bg-[#003BAA] text-white text-[15px] font-semibold rounded-full transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3]/60 shadow-sm cursor-pointer whitespace-nowrap"
       >
         <span
           key={language}
-          className="transition-all duration-200 ease-out transform"
+          className="transition-all duration-150 ease-out inline-block"
         >
           {language === "id" ? "ID" : "EN"}
         </span>
