@@ -8,6 +8,7 @@ import ClientLogos from "@/components/ClientLogos";
 import PortfolioCard, { PortfolioItem } from "@/components/PortfolioCard";
 import ConceptModal from "@/components/ConceptModal";
 import ContactModal from "@/components/ContactModal";
+import { useLanguage } from "@/lib/i18n/context";
 
 export type ProjectCategory =
   | "Semua Proyek"
@@ -264,6 +265,7 @@ const portfolioData: PortfolioItem[] = allPortfolioProjects.filter(
 );
 
 export default function PortofolioPage() {
+  const { dict } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("Semua Proyek");
   const [conceptModalOpen, setConceptModalOpen] = useState(false);
   const [selectedConcept, setSelectedConcept] = useState<PortfolioItem | null>(null);
@@ -271,11 +273,24 @@ export default function PortofolioPage() {
 
   // Filter projects based on activeCategory
   const filteredProjects = useMemo(() => {
-    if (activeCategory === "Semua Proyek") {
-      return portfolioData;
-    }
-    return portfolioData.filter((item) => item.category === activeCategory);
-  }, [activeCategory]);
+    const raw =
+      activeCategory === "Semua Proyek"
+        ? portfolioData
+        : portfolioData.filter((item) => item.category === activeCategory);
+
+    // Merge localized text
+    return raw.map((item) => {
+      const projDict = dict.portfolio.projects[item.id];
+      if (!projDict) return item;
+      return {
+        ...item,
+        title: projDict.title,
+        description: projDict.description,
+        extraInfo: projDict.extraInfo,
+        features: projDict.features,
+      };
+    });
+  }, [activeCategory, dict]);
 
   const handleViewConcept = (item: PortfolioItem) => {
     setSelectedConcept(item);
@@ -307,20 +322,20 @@ export default function PortofolioPage() {
             <div className="inline-flex items-center gap-2 mb-4 sm:mb-5">
               <span className="text-[#38BDF8] font-bold text-lg sm:text-xl leading-none">[</span>
               <span className="text-[#004CD3] font-bold text-xs sm:text-sm tracking-[0.2em] uppercase">
-                PORTOFOLIO
+                {dict.portfolio.badge}
               </span>
               <span className="text-[#38BDF8] font-bold text-lg sm:text-xl leading-none">]</span>
             </div>
 
             {/* Main Heading dengan Aksen Warna IDEA.support */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold tracking-tight text-slate-900 leading-[1.2] max-w-4xl mx-auto">
-              Website dan Aplikasi yang Kami Bangun untuk{" "}
-              <span className="text-[#004CD3]">Berbagai Bisnis</span>
+              {dict.portfolio.heroTitle1}{" "}
+              <span className="text-[#004CD3]">{dict.portfolio.heroTitle2}</span>
             </h1>
 
             {/* Subtitle / Deskripsi */}
             <p className="mt-4 sm:mt-5 text-slate-600 text-sm sm:text-base md:text-[17px] max-w-2xl mx-auto leading-relaxed">
-              Dari bisnis kecil hingga perusahaan — lihat berbagai proyek yang telah kami kerjakan dan bagaimana setiap solusi dirancang sesuai kebutuhan klien.
+              {dict.portfolio.heroSubtitle}
             </p>
 
             {/* Dua Tombol CTA */}
@@ -330,13 +345,13 @@ export default function PortofolioPage() {
                 onClick={() => setContactModalOpen(true)}
                 className="px-7 sm:px-8 py-3 sm:py-3.5 rounded-full bg-[#004CD3] text-white font-semibold text-sm sm:text-base shadow-lg shadow-blue-600/25 hover:bg-[#003B86] hover:shadow-xl hover:-translate-y-0.5 transition-all cursor-pointer"
               >
-                Konsultasi Gratis
+                {dict.portfolio.ctaConsult}
               </button>
               <Link
                 href="/layanan"
                 className="px-7 sm:px-8 py-3 sm:py-3.5 rounded-full bg-white text-slate-800 hover:text-[#004CD3] border border-[#D0E3F8] hover:border-[#004CD3]/60 font-semibold text-sm sm:text-base shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all cursor-pointer"
               >
-                Lihat Paket Harga
+                {dict.portfolio.ctaPricing}
               </Link>
             </div>
           </section>
@@ -364,6 +379,7 @@ export default function PortofolioPage() {
                   >
                     {portfolioCategories.map((cat) => {
                       const isActive = activeCategory === cat.id;
+                      const label = dict.portfolio.categories[cat.id] || cat.label;
                       return (
                         <button
                           key={cat.id}
@@ -378,7 +394,7 @@ export default function PortofolioPage() {
                           }`}
                         >
                           {cat.icon}
-                          <span>{cat.label}</span>
+                          <span>{label}</span>
                         </button>
                       );
                     })}
@@ -400,17 +416,17 @@ export default function PortofolioPage() {
                   </svg>
                 </div>
                 <h3 className="font-bold text-slate-900 text-lg mb-1">
-                  Belum ada proyek dalam kategori ini
+                  {dict.portfolio.emptyTitle}
                 </h3>
                 <p className="text-sm text-slate-500 mb-5">
-                  Silakan pilih kategori lainnya atau tampilkan seluruh proyek yang telah kami bangun.
+                  {dict.portfolio.emptyDesc}
                 </p>
                 <button
                   type="button"
                   onClick={() => setActiveCategory("Semua Proyek")}
-                  className="px-5 py-2 rounded-full bg-[#004CD3] text-white text-xs font-semibold hover:bg-[#003B86] transition-colors"
+                  className="px-5 py-2 rounded-full bg-[#004CD3] text-white text-xs font-semibold hover:bg-[#003B86] transition-colors cursor-pointer"
                 >
-                  Tampilkan Semua Proyek
+                  {dict.portfolio.emptyBtn}
                 </button>
               </div>
             ) : (

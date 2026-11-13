@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import IdeaSupportLogo from "./IdeaSupportLogo";
+import { useLanguage } from "@/lib/i18n/context";
 
 const WA_NUMBER = "6285770037803";
 
@@ -18,6 +19,7 @@ export default function ContactModal({
   serviceTitle = "Gratis",
   category = "Konsultasi",
 }: ContactModalProps) {
+  const { dict } = useLanguage();
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [name, setName] = useState("");
   const [note, setNote] = useState("");
@@ -60,7 +62,9 @@ export default function ContactModal({
   };
 
   const modalHeading =
-    serviceTitle === "Gratis" ? "Konsultasi Gratis" : `Konsultasi ${serviceTitle}`;
+    serviceTitle === "Gratis" || serviceTitle === "Consultation"
+      ? dict.contactModal.consultFree
+      : `${dict.contactModal.consultPrefix} ${serviceTitle}`;
 
   return (
     <div
@@ -78,7 +82,7 @@ export default function ContactModal({
         <button
           onClick={onClose}
           className="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-2 rounded-full hover:bg-slate-100 transition-colors cursor-pointer"
-          aria-label="Tutup modal"
+          aria-label={dict.contactModal.close}
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -97,7 +101,7 @@ export default function ContactModal({
           {modalHeading}
         </h3>
         <p className="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed">
-          Diskusikan kebutuhan website atau aplikasi Anda bersama tim IDEA.support. Kami siap memberikan saran teknis, estimasi waktu, dan solusi terbaik tanpa biaya.
+          {dict.contactModal.description}
         </p>
 
         {submitted ? (
@@ -107,69 +111,67 @@ export default function ContactModal({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <p className="font-bold text-base mb-1">Permintaan Konsultasi Diterima!</p>
+            <p className="font-bold text-base mb-1">{dict.contactModal.successTitle}</p>
             <p className="text-xs text-emerald-800">
-              Tim IDEA.support akan segera menghubungi Anda dalam waktu 1x24 jam kerja.
+              {dict.contactModal.successDesc}
             </p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                Nama Lengkap / Perusahaan <span className="text-red-500">*</span>
+                {dict.contactModal.nameLabel} <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Contoh: Ryan Putrawan (PT Maju Bersama)"
+                placeholder={dict.contactModal.namePlaceholder}
                 className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:border-[#004CD3] focus:ring-2 focus:ring-[#004CD3]/20 outline-none transition-all"
               />
             </div>
 
             <div>
               <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                WhatsApp / Email Aktif <span className="text-red-500">*</span>
+                {dict.contactModal.contactLabel} <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 required
                 value={emailOrPhone}
                 onChange={(e) => setEmailOrPhone(e.target.value)}
-                placeholder="0812-xxxx-xxxx atau nama@email.com"
+                placeholder={dict.contactModal.contactPlaceholder}
                 className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:border-[#004CD3] focus:ring-2 focus:ring-[#004CD3]/20 outline-none transition-all"
               />
             </div>
 
             <div>
               <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                Layanan yang Diminati
+                {dict.contactModal.serviceLabel}
               </label>
               <select
                 value={serviceType}
                 onChange={(e) => setServiceType(e.target.value)}
                 className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:border-[#004CD3] focus:ring-2 focus:ring-[#004CD3]/20 outline-none transition-all bg-white"
               >
-                <option value="Website Landing Page">Website Landing Page</option>
-                <option value="Website Company Profile">Website Company Profile</option>
-                <option value="Website E-Commerce">Website E-Commerce</option>
-                <option value="Website Sistem Booking">Website Sistem Booking</option>
-                <option value="Web App / SaaS">Web App &amp; SaaS</option>
-                <option value="Aplikasi Mobile (Android / iOS)">Aplikasi Mobile</option>
-                <option value="Website Custom Sistem">Website Custom Sistem</option>
+                {dict.contactModal.serviceOptions.map((opt, idx) => (
+                  <option key={idx} value={opt}>
+                    {opt}
+                  </option>
+                ))}
               </select>
             </div>
 
             <div>
               <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                Ceritakan Kebutuhan Proyek Anda
+                {dict.contactModal.needLabel}
               </label>
               <textarea
                 rows={3}
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
-                placeholder="Misal: Saya ingin membuat website booking lapangan futsal dengan sistem pembayaran otomatis..."
+                placeholder={dict.contactModal.needPlaceholder}
                 className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:border-[#004CD3] focus:ring-2 focus:ring-[#004CD3]/20 outline-none resize-none transition-all"
               />
             </div>
@@ -185,14 +187,13 @@ export default function ContactModal({
                 <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
                   <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.941-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.353.101.173.45 0.743.966 1.202.664.592 1.224.776 1.397.863.173.086.274.072.376-.044.101-.116.433-.506.549-.679.116-.173.231-.144.39-.086.159.058 1.011.477 1.184.563.173.086.289.13.332.202.043.072.043.419-.101.824z" />
                 </svg>
-                Konsultasi WhatsApp
+                {dict.contactModal.btnWa}
               </a>
-
               <button
                 type="submit"
-                className="bg-[#004CD3] hover:bg-[#003BAA] text-white py-3 px-5 rounded-full font-semibold text-sm transition-colors shadow-sm text-center cursor-pointer"
+                className="sm:w-auto px-6 py-3 bg-[#004CD3] hover:bg-[#003baa] text-white rounded-full font-semibold text-sm transition-colors shadow-sm cursor-pointer"
               >
-                Kirim Form
+                {dict.contactModal.btnSubmit}
               </button>
             </div>
           </form>

@@ -1,11 +1,16 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import IdeaSupportLogo from "./IdeaSupportLogo";
+import { useLanguage } from "@/lib/i18n/context";
 
 const WA_NUMBER = "6285770037803";
 const CURRENT_YEAR = 2026;
 
 export default function Footer() {
+  const { dict } = useLanguage();
+
   return (
     <footer
       id="kontak"
@@ -20,77 +25,49 @@ export default function Footer() {
           <div className="lg:col-span-4 space-y-4 sm:space-y-5">
             <Link
               href="/"
-              aria-label="Idea.support — Beranda"
+              aria-label="Idea.support"
               className="inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
             >
               <IdeaSupportLogo variant="white" size="md" />
             </Link>
 
             <p className="text-blue-100/90 text-xs sm:text-[13.5px] leading-relaxed max-w-sm font-normal">
-              Jasa pembuatan website dan aplikasi profesional untuk bisnis, UMKM, brand, dan perusahaan di seluruh Indonesia.
+              {dict.footer.brandDesc}
             </p>
           </div>
 
           {/* 2. Middle Column: Layanan (~4 cols) */}
           <div className="lg:col-span-4">
             <h3 className="text-xs sm:text-[13px] font-bold text-white tracking-wider uppercase mb-5">
-              LAYANAN
+              {dict.footer.servicesTitle}
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 sm:gap-x-10 gap-y-3">
               {/* Sub-column 1 */}
               <ul className="space-y-3">
-                <li>
-                  <Link
-                    href="/layanan"
-                    className="text-blue-100/85 hover:text-white text-xs sm:text-[13.5px] transition-colors duration-150 block"
-                  >
-                    Website Landing Page
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/layanan"
-                    className="text-blue-100/85 hover:text-white text-xs sm:text-[13.5px] transition-colors duration-150 block"
-                  >
-                    Website Company Profile
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/layanan"
-                    className="text-blue-100/85 hover:text-white text-xs sm:text-[13.5px] transition-colors duration-150 block"
-                  >
-                    Website E-Commerce
-                  </Link>
-                </li>
+                {dict.footer.servicesList.slice(0, 3).map((item, idx) => (
+                  <li key={idx}>
+                    <Link
+                      href="/layanan"
+                      className="text-blue-100/85 hover:text-white text-xs sm:text-[13.5px] transition-colors duration-150 block"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
               </ul>
 
               {/* Sub-column 2 */}
               <ul className="space-y-3">
-                <li>
-                  <Link
-                    href="/layanan"
-                    className="text-blue-100/85 hover:text-white text-xs sm:text-[13.5px] transition-colors duration-150 block"
-                  >
-                    Website Sistem Booking
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/layanan"
-                    className="text-blue-100/85 hover:text-white text-xs sm:text-[13.5px] transition-colors duration-150 block"
-                  >
-                    Web App &amp; SaaS
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/layanan"
-                    className="text-blue-100/85 hover:text-white text-xs sm:text-[13.5px] transition-colors duration-150 block"
-                  >
-                    Website Custom Sistem
-                  </Link>
-                </li>
+                {dict.footer.servicesList.slice(3, 6).map((item, idx) => (
+                  <li key={idx}>
+                    <Link
+                      href="/layanan"
+                      className="text-blue-100/85 hover:text-white text-xs sm:text-[13.5px] transition-colors duration-150 block"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -98,7 +75,7 @@ export default function Footer() {
           {/* 3. Right Column: Hubungi Kami Cards (~4 cols, 2x2 Grid) */}
           <div className="lg:col-span-4">
             <h3 className="text-xs sm:text-[13px] font-bold text-white tracking-wider uppercase mb-5">
-              HUBUNGI KAMI
+              {dict.footer.contactTitle}
             </h3>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -212,14 +189,14 @@ export default function Footer() {
         {/* Bottom Bar (Copyright & Kebijakan Privasi) */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4">
           <p className="text-xs sm:text-[13px] text-blue-100/90 text-center sm:text-left">
-            © {CURRENT_YEAR} Idea.support — Semua hak cipta dilindungi.
+            {dict.footer.copyright}
           </p>
 
           <Link
             href="/kebijakan-privasi"
             className="text-xs sm:text-[13px] text-blue-100/90 hover:text-white transition-colors"
           >
-            Kebijakan Privasi
+            {dict.footer.privacyPolicy}
           </Link>
         </div>
 

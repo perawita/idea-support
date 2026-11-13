@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { useLanguage } from "@/lib/i18n/context";
 
 export function DompuLogo({ className = "" }: { className?: string }) {
   return (
@@ -68,6 +71,8 @@ export default function ClientLogos({
   speed = "28s",
   className = "",
 }: ClientLogosProps) {
+  const { dict } = useLanguage();
+
   const logos = [
     { id: "dompu-1", component: <DompuLogo /> },
     { id: "lawyer-1", component: <LawyerLogo /> },
@@ -94,7 +99,7 @@ export default function ClientLogos({
         {/* Label DIPERCAYA OLEH */}
         <div className="shrink-0 pl-4 sm:pl-8 lg:pl-16 pr-5 sm:pr-6 flex items-center">
           <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.18em] text-[#0062E0] uppercase whitespace-nowrap">
-            DIPERCAYA OLEH
+            {dict.home.trustedBy}
           </span>
         </div>
 

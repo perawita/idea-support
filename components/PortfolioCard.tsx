@@ -2,6 +2,7 @@
 
 import React from "react";
 import PortfolioPreview, { ProjectCategory } from "./PortfolioPreview";
+import { useLanguage } from "@/lib/i18n/context";
 
 export interface PortfolioItem {
   id: string;
@@ -21,6 +22,8 @@ export interface PortfolioCardProps {
 }
 
 export default function PortfolioCard({ item, onViewConcept }: PortfolioCardProps) {
+  const { dict } = useLanguage();
+
   // Hanya tampilkan card proyek yang sudah memiliki gambar atau foto thumbnail
   if (!item.image || !item.image.trim()) {
     return null;
@@ -42,7 +45,7 @@ export default function PortfolioCard({ item, onViewConcept }: PortfolioCardProp
           <div className="flex items-center justify-between mb-3">
             <span className="bg-[#EDF5FE] text-[#004CD3] text-xs font-semibold px-3 py-1 rounded-full border border-[#CBDFF5] inline-flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#004CD3]" />
-              {item.category}
+              {dict.portfolio.categories[item.category as string] || item.category}
             </span>
             <span className="text-[11px] text-slate-400 font-medium">
               {item.extraInfo || "Custom Solution"}
@@ -67,7 +70,7 @@ export default function PortfolioCard({ item, onViewConcept }: PortfolioCardProp
           <svg className="w-4 h-4 text-[#004CD3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
-          <span>Siap Pakai</span>
+          <span>{dict.portfolio.readyToDeploy}</span>
         </div>
 
         <button
@@ -75,7 +78,7 @@ export default function PortfolioCard({ item, onViewConcept }: PortfolioCardProp
           onClick={() => onViewConcept(item)}
           className="inline-flex items-center gap-1.5 border border-[#004CD3] text-[#004CD3] bg-white group-hover:bg-[#004CD3] group-hover:text-white rounded-full px-5 py-2 text-xs sm:text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004CD3] cursor-pointer shadow-2xs"
         >
-          <span>Lihat Detail</span>
+          <span>{dict.portfolio.viewDetails}</span>
           <svg className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>

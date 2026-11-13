@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/lib/i18n/context";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -41,7 +42,9 @@ export default function RootLayout({
           backgroundSize: '40px 40px',
         }}
       >
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );
