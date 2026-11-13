@@ -116,20 +116,12 @@ export function DompuLogo({ className = "" }: { className?: string }) {
 
 export function LawyerLogo({ className = "" }: { className?: string }) {
   return (
-    <div className={`inline-flex items-center gap-2.5 shrink-0 whitespace-nowrap py-1 ${className}`}>
+    <div className={`inline-flex items-center justify-center shrink-0 whitespace-nowrap py-1 ${className}`}>
       <img
-        src="/assets/clients/lawyer-logo.png"
-        alt="Lawyer Legal Solution"
-        className="h-8 sm:h-9 w-auto object-contain shrink-0 drop-shadow-xs"
+        src="/assets/clients/lawyer-shield.png"
+        alt="Lawyer"
+        className="h-8 sm:h-9 w-auto object-contain shrink-0"
       />
-      <div className="flex flex-col text-left leading-none shrink-0 whitespace-nowrap">
-        <span className="font-extrabold tracking-tight text-[#1E3A8A] text-base sm:text-lg font-sans">
-          Lawyer
-        </span>
-        <span className="font-bold text-[9px] sm:text-[10px] tracking-wider text-[#0062E0] uppercase font-sans mt-0.5">
-          LEGAL APP
-        </span>
-      </div>
     </div>
   );
 }
