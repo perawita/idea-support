@@ -21,6 +21,11 @@ export interface PortfolioCardProps {
 }
 
 export default function PortfolioCard({ item, onViewConcept }: PortfolioCardProps) {
+  // Hanya tampilkan card proyek yang sudah memiliki gambar atau foto thumbnail
+  if (!item.image || !item.image.trim()) {
+    return null;
+  }
+
   return (
     <div className="bg-white rounded-3xl border border-[#D0E3F8] p-5 sm:p-6 shadow-xs hover:border-[#004CD3]/60 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group h-full">
       {/* Top Part: Mockup Preview Container */}

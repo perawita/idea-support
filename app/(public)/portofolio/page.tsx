@@ -90,7 +90,8 @@ const portfolioCategories: CategoryNavOption[] = [
   },
 ];
 
-const portfolioData: PortfolioItem[] = [
+// Seluruh master data proyek portofolio (data backend tetap tersimpan)
+const allPortfolioProjects: PortfolioItem[] = [
   {
     id: "porto-lp-1",
     category: "Landing Page",
@@ -256,6 +257,11 @@ const portfolioData: PortfolioItem[] = [
     techStack: ["React Native", "Android SDK", "TypeScript"],
   },
 ];
+
+// Hanya tampilkan card proyek yang sudah memiliki gambar / foto preview (proyek tanpa gambar disembunyikan)
+const portfolioData: PortfolioItem[] = allPortfolioProjects.filter(
+  (item) => Boolean(item.image && item.image.trim().length > 0)
+);
 
 export default function PortofolioPage() {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("Semua Proyek");
