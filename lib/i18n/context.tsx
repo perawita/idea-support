@@ -20,24 +20,32 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>("id");
   const [mounted, setMounted] = useState(false);
 
-  // Initialize from localStorage safely on client mount
+  // Default saat website dibuka adalah ID (Indonesia).
+  // Menggunakan sessionStorage agar pilihan bahasa tetap aktif selama sesi browsing
+  // dan perpindahan halaman/refresh, namun selalu kembali ke default ID saat website dibuka baru.
   useEffect(() => {
     setMounted(true);
     try {
-      const savedLang = localStorage.getItem(STORAGE_KEY) as Language | null;
-      if (savedLang === "en" || savedLang === "id") {
-        setLanguageState(savedLang);
-        document.documentElement.lang = savedLang;
+      // Hapus sisa localStorage lama agar tidak memaksa bahasa Inggris saat web dibuka
+      localStorage.removeItem(STORAGE_KEY);
+
+      const sessionLang = sessionStorage.getItem(STORAGE_KEY) as Language | null;
+      if (sessionLang === "en" || sessionLang === "id") {
+        setLanguageState(sessionLang);
+        document.documentElement.lang = sessionLang;
+      } else {
+        setLanguageState("id");
+        document.documentElement.lang = "id";
       }
     } catch {
-      // Ignore localStorage access restrictions if any
+      // Abaikan jika ada batasan akses storage di browser
     }
   }, []);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     try {
-      localStorage.setItem(STORAGE_KEY, lang);
+      sessionStorage.setItem(STORAGE_KEY, lang);
       document.documentElement.lang = lang;
     } catch {
       // Ignore errors
